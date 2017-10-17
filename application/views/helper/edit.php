@@ -72,8 +72,20 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $edit->number?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
-                        
+                           <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $num2[0]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                         <br>
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                          <input class="form-control" type="text" id="phone" name="phone[]"  value="<?php echo $num2[1]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                        <?php
+                    }
+                        ?>
                         </div>
                            <div class="col-lg-2">
                                <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
@@ -373,7 +385,7 @@ $(document).ready(function() {
                                 message: 'The Contact Number is required'
                                 },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
                             message: 'The phone number must be local or mobile'
                         },

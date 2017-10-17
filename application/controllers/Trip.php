@@ -51,9 +51,7 @@ class trip extends CI_Controller {
 
        public function expenseadd()
         {
-
-
-            $data['menu'] = $this->load_model->menu();
+           $data['menu'] = $this->load_model->menu();
             $data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo;
           

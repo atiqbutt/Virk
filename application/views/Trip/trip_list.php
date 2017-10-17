@@ -6,7 +6,7 @@
   .paddinglr{
   padding-left:3px !important; padding-right:15px !important; margin-left:0px !important;margin-right:0px !important;
   }
-  td.special { border: 2px double red; }
+  td.special { border: 2px double; }
 </style> 
 
 
@@ -90,10 +90,18 @@
               <td> <?php echo $amb["vehicleregisterationno"];?> </td>
               <td> 
                 <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
-                    
+
+                  <?php foreach ($amb['trip_products'] as $value){
+                  if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
+
+
                    
-                  <tr>
+                   
+                  
                      <td class="special"><?php echo $value['heading'] ?> </td>
                   </tr> 
 
@@ -104,7 +112,12 @@
 
               <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                  <?php foreach ($amb['trip_products'] as $value){ 
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                     
                    
                   <tr>
@@ -119,8 +132,12 @@
               <!-- <td> <?php echo $amb["temperature"];?> </td> -->
                <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
-                    
+                  <?php foreach ($amb['trip_products'] as $value){ 
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                    
                   <tr>
                      <td class="special"><?php echo $value['product_quantity'] ?> </td>
@@ -134,7 +151,12 @@
 
               <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                  <?php foreach ($amb['trip_products'] as $value){ 
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                     
                    
                   <tr>
@@ -149,7 +171,12 @@
 
                 <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                  <?php foreach ($amb['trip_products'] as $value){ 
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                     
                    
                   <tr>
@@ -163,7 +190,12 @@
               </td>
                  <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                  <?php foreach ($amb['trip_products'] as $value){ 
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                     
                    
                   <tr>
@@ -184,7 +216,12 @@
            <!--    <td> <?php echo $amb["withholdingtax"];?> </td> -->
             <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                  <?php foreach ($amb['trip_products'] as $value){ 
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                     
                    
                   <tr>
@@ -201,7 +238,12 @@
              <!--  <td> <?php echo $amb["gravity"];?> </td> -->
               <td>
                   <table>
-                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                  <?php foreach ($amb['trip_products'] as $value){
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
                     
                    
                   <tr>

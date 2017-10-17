@@ -60,7 +60,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                    
                       
                     <div class=" form-group">    
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Expense Type</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Expense Type <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
                             <select class="form-control sel" name="expense[]" id="expense">
                                <option value="">Select Options</option>
@@ -81,7 +81,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 
               <input type="hidden" name="idt" value="<?php echo $tripmanagement->id?>">
                        <div class=" form-group">    
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Paye</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Paye <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
                             <select class="form-control sel" name="driver[]" id="driver">
                                <option value="">Select Options</option>
@@ -110,7 +110,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                 <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <input class="btn btn-success" type="submit" name="register" value="Submit" />
+                          <input class="btn btn-success" id="sub" type="submit" name="register" value="Submit" />
                          
                           <a type="submit" name="register" href='<?php echo base_url()?>Trip/index' class="btn btn-danger">Cancel</a>
             
@@ -216,6 +216,7 @@ $(document).ready(function(){
       alert('fill the field');
       return false;
     }
+
      var wrapper = $(".bilal");
       var row ='<tr class="row_table">'
                    
@@ -227,12 +228,31 @@ $(document).ready(function(){
                         +'<input type="text" name="amount[]" readonly class="form-control" value="'+amo+'" onkeypress="return ValidateNumberOnly()" placeholder="Amount">'
                     +'</td>';
                      wrapper.append(row);
-                     $('#expense').val("");
-                      $('#driver').val("");
-                       $('#amount').val("");
+                    
+                     $('#expense').val("").change();
+                     $('#driver').val("").change();
+                      $('#amount').val("");
 
 
  });
+});
+
+$('#sub').click(function(){
+  var a=$('#expense').val();
+    var t=$('#expense option:selected').text();
+    var id=$('#expense option:selected').val();
+    var amo=$('#amount').val();
+
+
+    var b=$('#driver').val();
+    var c=$('#driver option:selected').text();
+    var idd=$('#driver option:selected').val();
+    if(a=='' || b=='' || amo=='')
+    {
+      alert('fill the field');
+      return false;
+    }
+                   
 });
 
 </script>
@@ -260,7 +280,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 <script>
 $('.sel').select2({
    placeholder: "Select an option",
-    allowClear: true
+   
 
 });
 </script>
