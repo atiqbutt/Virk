@@ -201,27 +201,22 @@ $(document).ready(function(){
                             }
                         }
                     },
-                    phone: {
-                        message: 'The phone number is not valid',
-                         trigger:'blur',
-                        validators: 
-
-                        {
-                            notEmpty: {
-                                message: 'The phone number is required'
-                            },
-                         //      regexp: {
-                         //    regexp: /^[0-9]{10}$/,
-                         //     message: 'Plz Enter 10 Digit Number'
-                         // },
-                         phone: {
-                        country: 'PK'
-                    },
-                            
-                        }
-                    },
-
-                
+                   
+                 phone: {
+                      
+                    trigger:'keyup blur',
+                validators: {
+                     notEmpty: {
+                             message: 'The phone number is not valid'
+                         },
+                         stringLength: {
+                            min: 11,
+                            max: 11,
+                            message: 'The phone number is not valid'
+                        },
+                    
+                }
+            },
                 contactnumber: {
                       
                     trigger:'keyup blur',
@@ -230,7 +225,7 @@ $(document).ready(function(){
                              message: 'The contact number is required'
                          },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
                             message: 'The phone number is not valid'
                         },

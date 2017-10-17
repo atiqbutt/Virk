@@ -1,42 +1,4 @@
- <script type="text/javascript">
-jQuery(window).on('load',  function() {
-                new JCaption('img.caption');
-            });
-jQuery(document).ready(function(){
-    jQuery('.hasTooltip').tooltip({"html": true,"container": "body"});
-});
-;jQuery(document).ready(function(){
-    jQuery('.hasTooltip').tooltip({"html": true,"container": "body"});
-});
-  </script>
-  <script type="text/javascript">
-    (function() {
-      Joomla.JText.load({"JLIB_FORM_FIELD_INVALID":"Invalid field:&#160"});
-    })();
-  </script>
-
-    <script type="text/javascript">
-        //<![CDATA[
-        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-            var msViewportStyle = document.createElement("style");
-            msViewportStyle.appendChild(
-                document.createTextNode("@-ms-viewport{width:auto!important}")
-            );
-            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-        }
-        //]]>
-    </script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-17663461-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-                
+   
                             
    
 
@@ -61,19 +23,6 @@ jQuery(document).ready(function(){
           
           
  
- <script>
-      function test11(){
- /*       var f2 = document.getElementById("input");
-        var f1 = document.getElementById("input2");
-        var f3 = document.getElementById("input3");
-         var f4 = document.getElementById("input4");
-          var f5 = document.getElementById("input5");
-          var f6 = document.getElementById("input6");
-   */     //f2.value = f1.value + f3.value+ f4.value+ f5.value;
-     //   f1.value = f6.value +" "+ f5.value +" "+ f4.value+" "+ f3.value+" "+ f2.value;
-//   document.getElementById('ad')= document.getElementById("a").value;;
-      }
-    </script>
       
 <div class="col-md-6">
  <form  enctype="multipart/form-data" method="post" id="shippingForm" action="<?php echo base_url()?>Defination/updatelocationtype" >
@@ -148,14 +97,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         }
                     },
                    
-                    remarks: {
-                         trigger:'blur',
-                        validators: {
-                            notEmpty: {
-                                message: 'The remarks field is required'
-                            }
-                        }
-                    },
+                   
                   
                 }
 

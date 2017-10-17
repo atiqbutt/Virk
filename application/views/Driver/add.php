@@ -277,7 +277,7 @@ $(document).ready(function(){
                              message: 'The phone number is required'
                          },*/
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
                             message: 'The phone number must be local or mobile'
                         },

@@ -6,6 +6,7 @@
   .paddinglr{
   padding-left:3px !important; padding-right:15px !important; margin-left:0px !important;margin-right:0px !important;
   }
+  td.special { border: 2px double red; }
 </style> 
 
 
@@ -47,7 +48,6 @@
           					<th class="paddinglr">Contractor</th>
           					<th class="paddinglr">Source</th>
                     <th class="paddinglr">Filling Date</th> 
-                   
                      <th class="paddinglr">Meter Reading</th>
                     <th class="paddinglr">Vehicle</th>
                     <th class="paddinglr">Product</th>                    
@@ -56,9 +56,7 @@
                     <th class="paddinglr">Freight Rate</th>
                     <th class="paddinglr">Carriage Commission</th> 
                     <th class="paddinglr">W.H.T</th> 
-
-                   
-                    <th class="paddinglr">Gravity</th>
+                  <th class="paddinglr">Gravity</th>
                      <th class="paddinglr">Remaining Commission</th>
                     <th class="paddinglr">Service Charges</th>
        			
@@ -80,27 +78,145 @@
                 <?php }else{ ?>
                   <td><a href="<?php echo base_url();?>Trip/close_trip/<?php echo $amb["id"];?>"><?php echo $amb["id"];?></a></td>
                    <?php } ?>
-            <td> <?php echo $amb["type"];?>  </td>
-                  <td> <?php echo $amb["comname"];?>  </td>
-        		<td> <?php echo $amb["conname"];?>  </td>
-                <td> <?php echo $amb["source"];?>  </td>
+              <td> <?php echo $amb["type"];?>  </td>
+              <td> <?php echo $amb["comname"];?>  </td>
+              <td> <?php echo $amb["conname"];?>  </td>
+              <td> <?php echo $amb["source"];?>  </td>
 
-                <td> <?php $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
-                 echo $newDate;?> 
-                </td>
-                <td> <?php echo $amb["temperature"];?> </td>
-                <td> <?php echo $amb["quantity"];?> </td>
-                 <td> <?php echo $amb["freight_rate"];?> </td>
-                  <td> <?php echo $amb["carriage"];?> </td>
-                     <td> <?php echo $amb["withholdingtax"];?> </td>
-          			<td> <?php echo $amb["gravity"];?> </td>
+              <td> <?php $newDate = date("d/m/Y", strtotime($amb["filling_date"]));
+              echo $newDate;?> 
+              </td>
+              <td> <?php echo $amb["start_meter_reading"];?> </td>
+              <td> <?php echo $amb["vehicleregisterationno"];?> </td>
+              <td> 
+                <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['heading'] ?> </td>
+                  </tr> 
 
-                <td> <?php echo $amb["vehicleregisterationno"];?> </td>
-                <td> <?php echo $amb["freight_rate"];?> </td>
-                <td> <?php echo $amb["withholdingtax"];?> </td>
-        				<td> <?php echo $amb["remaining_commission"];?> </td>
+                  <?php } ?>
+
+                </table>
+              </td>
+
+              <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['product_temperature'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+              <!-- <td> <?php echo $amb["temperature"];?> </td> -->
+               <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['product_quantity'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+
+              <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['freight_rate'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+
+                <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['carriage_commission'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+                 <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['withholding_tax'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+
+
+             
+             
+            <!--   <td> <?php echo $amb["carriage"];?> </td> -->
+
+           <!--    <td> <?php echo $amb["withholdingtax"];?> </td> -->
+            <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['product_gravity'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+
+
+             <!--  <td> <?php echo $amb["gravity"];?> </td> -->
+              <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){ ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['remaining_commission'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+
+
+        			<!-- 	<td> <?php echo $amb["remaining_commission"];?> </td> -->
         				<td> <?php echo $amb["servicecharges"];?></td>
-
                 <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
                 </tr>
 	         <?php  } }?>

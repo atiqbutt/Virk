@@ -23,7 +23,9 @@ class trip extends CI_Controller {
             $data['userInfo'] = $this->userInfo;  
 			$data["expensetype"]=$this->trip_model->getAllRecords("expensetype",array("is_delete"=>0),"id","DESC");	
 			$data["tripmanagement"]=$this->trip_model->GetAllTrips();
-
+            
+            $data["tripmanagement"]=$this->trip_model->GetTripProductss($data["tripmanagement"]);
+            //var_dump('<pre>', $data["tripmanagement"]);die;
 			$data["page"]='Trip/trip_list';
             $this->load->view('Template/main',$data);
 

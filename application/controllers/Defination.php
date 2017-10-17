@@ -1289,7 +1289,7 @@
               $id=$this->uri->segment(3);
               $data['edit']=$this->db->where('id',$id)->get('contractorinformation')->row();
               if($data['edit']==""){
-                   redirect('Error/dataNotFound');
+              redirect('Error/dataNotFound');
               }
               $data['page']='Contractor/edit';
               $this->load->view('Template/main',$data);
@@ -1659,7 +1659,7 @@
                 $id=$admin['id'];
                 $data=array(
                    'name'=>$field['name'],
-                    'number'=>implode(',',$field['number']),
+                    'number'=>implode(',',$field['phone']),
                     'address'=>$field['address'],
                      'religion'=>$field['religion'],
                     'cnic'=>$field['cnic'],
@@ -1670,6 +1670,7 @@
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
                     'modifiedBy'=>$id                  
                 );
+              
                 if($url!='')
                     {
                    	$data['image1']=$url;
