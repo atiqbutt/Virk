@@ -54,7 +54,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         
-                           <input type="name" name="remarks" class="form-control"  placeholder="Title" >
+                           <input type="name" name="remarks" class="form-control"  placeholder="Remarks" >
                         </div>
                       </div>
                     
@@ -67,7 +67,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <div class="col-md-6 col-md-offset-3">
                           <input class="btn btn-success" type="submit" name="register" value="Submit" />
                           <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
-                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/driverpage' class="btn btn-danger">Cancel</a>
+                          <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_locationtype' class="btn btn-danger">Cancel</a>
             
                         </div>
                       </div>
