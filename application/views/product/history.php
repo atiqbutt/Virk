@@ -23,6 +23,7 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                   <th> Sr #</th>
                                     <th> Name</th>
                                     <th>Price</th>
                                     <th>From Date</th>
@@ -36,8 +37,10 @@
                             <?php
                             if(!empty($product))
                             {
+                              $i=1;
                             foreach($product as $amb){ ?>
                                 <tr class="odd gradeX">
+                                     <td><?php echo $i++;?></td>  
                                 <td><?php echo $amb["heading"];?></td>    
                               <td><?php echo $amb["price"];?></td>
 								              <td><?php echo $amb["startdate"];?></td>
@@ -176,8 +179,6 @@
   } );
   </script>
 
- 
- 
  
  
  

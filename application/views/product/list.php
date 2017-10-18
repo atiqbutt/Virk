@@ -22,9 +22,10 @@
 
 
 
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="producttype" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <TH> Sr #</TH>
                                     <th> Name</th>
                                     <th>Description</th>
                                     <th>Status</th>
@@ -36,8 +37,10 @@
                             <?php
                             if(!empty($producttype))
                             {
+                              $i=1;
                             foreach($producttype as $amb){ ?>
                                 <tr class="odd gradeX">
+                                   <td><?php echo $i++;?></td>
                                 <td><?php echo $amb["name"];?></td>
 
 
@@ -109,6 +112,47 @@ else{
  
  
  
+ 
+ 
+ <script>
+         $(document).ready(function() {
+        $('#producttype').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1,2]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1,2]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                columns: [ 0, 1,2]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                columns: [ 0, 1,2]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
+
+
  
  
  
