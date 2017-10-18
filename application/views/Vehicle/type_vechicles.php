@@ -20,10 +20,10 @@
             
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="vehicletype" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                   
+                                   <th>Sr #</th>
                                     <th> Name</th>
                                     <th> status</th>
                                     <th>Action</th>                                   
@@ -34,8 +34,10 @@
                             <?php
                             if(!empty($vehicletype))
                             {
+                              $i=1;
                             foreach($vehicletype as $amb){ ?>
                                 <tr class="odd gradeX">
+                                <td><?php echo $i++;?></td>
                                 <td><?php echo $amb["heading"];?></td>
                               
                                  <td>
@@ -106,6 +108,47 @@
             
  </section>
  
+
+
+ <script>
+         $(document).ready(function() {
+        $('#vehicletype').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                 columns: [ 0, 1]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                   columns: [ 0, 1]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
+
+
  
  
  

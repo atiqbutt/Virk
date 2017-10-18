@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -76,13 +76,13 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         $num2=explode(',', $edit->number);
                        
                         ?>
-                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $num2[0]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                            <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[0]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                          <br>
                          <?php
                          if(!empty($num2[1]))
                             {
                             ?>
-                          <input class="form-control" type="text" id="phone" name="phone[]"  value="<?php echo $num2[1]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                          <input class="form-control" type="text" id="phone" name="phone[]"  maxlength="11" value="<?php echo $num2[1]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                         <?php
                     }
                         ?>
@@ -103,7 +103,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <input required type="cnic" name="cnic" class="form-control" onkeypress='return ValidateNumberOnly()' id="inputEmail3" value="<?php echo $edit->cnic?>">
+                         <input required type="cnic" name="cnic" class="form-control" maxlength="13" onkeypress='return ValidateNumberOnly()' id="inputEmail3" value="<?php echo $edit->cnic?>">
                  
                         </div>
                       </div>

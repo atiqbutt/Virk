@@ -19,10 +19,10 @@
             
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="product" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                   
+                                    <th> Sr #</th>
                                     <th> Name1</th>
                                     <th> Unit</th>
                                     <th> Product type</th>
@@ -38,8 +38,10 @@
                             <?php
                             if(!empty($product))
                             {
+                              $i=1;
                             foreach($product as $amb){ ?>
                                 <tr class="odd gradeX">
+                                <td><?php echo $i++?></td>   
                                 <td><?php echo $amb["heading"];?></td>
                                  <td><?php echo $amb["unitname"];?></td>
                                   <td><?php echo $amb["pname"];?></td>
@@ -99,6 +101,48 @@
         <!-- /.col-lg-12 -->
     </div>
             
+
+ <script>
+         $(document).ready(function() {
+        $('#product').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1,2,3,4]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                  columns: [ 0, 1,2,3,4]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                columns: [ 0, 1,2,3,4]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                  columns: [ 0, 1,2,3,4]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
+
+
+ 
+ 
 
  
  

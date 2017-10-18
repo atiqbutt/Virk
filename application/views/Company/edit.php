@@ -6,7 +6,7 @@
     </style> 
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -70,8 +70,20 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" placeholder="Phone" value="<?php echo $edit->number?>" onkeypress='return ValidateNumberOnly()' />
-                        
+                             <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+                            <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" placeholder="Phone" value="<?php echo $num2[0]?>" onkeypress='return ValidateNumberOnly()' />
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                             <input class="form-control" type="text" id="phone" name="phone[]"  maxlength="11" placeholder="Phone" value="<?php echo $num2[1]?>" onkeypress='return ValidateNumberOnly()' />
+                  
+                  <?php
+              }
+              ?>
                         </div>
                            <div class="col-lg-2">
                                <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
@@ -96,14 +108,14 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Contact Person Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <input class="form-control" type="text" value="<?php echo $edit->cpnumber?>" placeholder="Contact Person Number" name="contactnumber" onkeypress='return ValidateNumberOnly()' />
+                         <input class="form-control" type="text" value="<?php echo $edit->cpnumber?>" maxlength="11" placeholder="Contact Person Number" name="contactnumber" onkeypress='return ValidateNumberOnly()' />
                          </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input class="form-control" type="text" value="<?php echo $edit->cnic?>" placeholder="Cnic" name="cnic" onkeypress='return ValidateNumberOnly()' />
+                               <input class="form-control" type="text" maxlength="13" value="<?php echo $edit->cnic?>" placeholder="Cnic" name="cnic" onkeypress='return ValidateNumberOnly()' />
                       </div>
                       </div>
                     

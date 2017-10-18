@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -73,7 +73,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                            <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                         
                         </div>
                            <div class="col-lg-2">
@@ -92,7 +92,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="cnic" name="cnic" class="form-control" id="inputEmail3"  onkeypress='return ValidateNumberOnly()' placeholder="Enter Cnic Without dashes" value="<?php echo set_value('cnic');?>">
+                              <input type="cnic" name="cnic" class="form-control" id="inputEmail3"  maxlength="13" onkeypress='return ValidateNumberOnly()' placeholder="Enter Cnic Without dashes" value="<?php echo set_value('cnic');?>">
                      </div>
                       </div>
                     

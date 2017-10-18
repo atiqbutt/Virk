@@ -18,7 +18,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <table id="example2" class="users table table-bordered table-hover">
+                <table id="expense" class="users table table-bordered table-hover">
                     <thead>
                         <tr>
                           <th>#</th>
@@ -85,7 +85,43 @@
       <!-- /.row -->
     </section>
  
- 
+ <script>
+         $(document).ready(function() {
+        $('#expense').DataTable({
+          dom: 'Bfrtip',
+      buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2 ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1, 2 ]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                   columns: [ 0, 1, 2 ]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: [ 0, 1, 2 ]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
 
  
  

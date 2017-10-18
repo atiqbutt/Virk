@@ -23,7 +23,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="route" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>Sr#</th>
@@ -87,5 +87,50 @@
     </div>
             
  </section>
+
+
+
+ <script>
+         $(document).ready(function() {
+        $('#route').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2,3,4,5,6,7 ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1, 2 ,3,4,5,6,7]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                  columns: [ 0, 1, 2 ,3,4,5,6,7]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                   columns: [ 0, 1, 2 ,3,4,5,6,7]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
+
+
+
+ 
+ 
 
   

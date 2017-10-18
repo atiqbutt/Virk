@@ -36,7 +36,7 @@ $(document).ready(function() {
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <table id="example2" class=" table table-bordered table-hover">
+                <table id="location" class=" table table-bordered table-hover">
                     <thead>
                         <tr>
                           <th>#</th>
@@ -85,24 +85,41 @@ $(document).ready(function() {
     </section>
  
  
+ <script>
+         $(document).ready(function() {
+        $('#location').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2 ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1, 2 ]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                   columns: [ 0, 1, 2 ]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: [ 0, 1, 2 ]
+                }
+            }
+            
+        ]
+        });
+          
+         });
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+</script>
+
