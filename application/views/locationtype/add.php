@@ -50,7 +50,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       </div>
                     
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Remarks
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                         
