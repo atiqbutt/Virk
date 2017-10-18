@@ -185,7 +185,7 @@ $(document).ready(function() {
 $('.sel').select2({
       // tags: "true",
     // minimumResultsForSearch: 20 ,
-    selectOnClose: true,
+   // selectOnClose: true,
    placeholder: "Select an option",
     allowClear: true
 

@@ -9,7 +9,7 @@
          <?php endif; ?>
         
                <div style="padding-left:0px;" class="panel-heading">
-                  <a  class="btn btn-success"  href="<?php echo base_url();?>Vehicle/add_Vehicle_states">Add Vechicle Status</a>
+                  <a  class="btn btn-success"  href="<?php echo base_url();?>Vehicle/add_Vehicle_states">Add Vehicle Status</a>
  
               </div>
           <div class="box col-sm-3" >

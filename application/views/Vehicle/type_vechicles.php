@@ -9,13 +9,13 @@
 
         
                <div style="padding-left:0px;" class="panel-heading">
-                  <a  class="btn btn-success"  href="<?php echo base_url();?>Vehicle/add_Vehicle_type">Add Vechicle Types</a>
+                  <a  class="btn btn-success"  href="<?php echo base_url();?>Vehicle/add_Vehicle_type">Add Vehicle Types</a>
  
               </div>
           <div class="box col-sm-3">
             
             <div class="box-header" style="padding-top:25px" >
-              <h3 class="box-title"><b>List Vechicle Type</b></h3>
+              <h3 class="box-title"><b>List Vehicle Type</b></h3>
             </div>
             
             <!-- /.box-header -->

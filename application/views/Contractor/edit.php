@@ -9,7 +9,8 @@ $(document).ready(function() {
     var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
-   
+   var wrappe=wrapper.length;
+   console.log(wrappe);
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
@@ -81,7 +82,7 @@ $(document).ready(function() {
                          if(!empty($num2[1]))
                             {
                             ?>
-                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()'/><button class="btn btn-default remove_fields"><span class=" fa fa-minus ko"></span></button>
                         <?php
                     }
                         ?>
@@ -419,15 +420,11 @@ $("#zzz").click(function(){
 });
 
 
+$('#remove_fields').click(function(){
+     $(this).parent().parent().remove();;
+})
 
 </script>
-
-
-
-
-
-
-
 <script>
 
 function ValidateNumberOnly()
