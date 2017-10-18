@@ -21,7 +21,7 @@
                       <div class="form-group">
                       <label class="control-label col-sm-3">Vehicle Type:</label>
                       <div class="col-sm-9">
-                        <select class="form-control" name="vehicle_type" selected="selected" required >                  
+                        <select class="form-control sel" name="vehicle_type" selected="selected" required >                  
                             <?php
                            
                             foreach ($data as $value) {
@@ -300,7 +300,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The vehicle type Field  is required and cannot be empty'
+                            message: 'The vehicle type Field  is required'
                         }
                     }
                 },
@@ -308,7 +308,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Registration No Field is required and cannot be empty'
+                            message: 'The Registration No Field is required'
                         }
                     }
                 },
@@ -317,7 +317,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Chassis no Field  is required and cannot be empty'
+                            message: 'The Chassis no Field  is required'
                         }
                     }
                 },
@@ -326,7 +326,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Engine no Field  is required and cannot be empty'
+                            message: 'The Engine no Field  is required'
                         }
                     }
                 },
@@ -334,7 +334,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Number of chamber Field  is required and cannot be empty'
+                            message: 'The Number of chamber Field  is required'
                         }
                     }
                 },
@@ -343,7 +343,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Color Field is required and cannot be empty'
+                            message: 'The Color Field is required'
                         }
                     }
                 },
@@ -351,7 +351,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Company Field  is required and cannot be empty'
+                            message: 'The Company Field  is required'
                         }
                     }
                 },
@@ -359,7 +359,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Model Field is required and cannot be empty'
+                            message: 'The Model Field is required'
                         }
                     }
                 },
@@ -367,7 +367,7 @@ $(document).ready(function() {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The capacity of chamber is required and cannot be empty'
+                            message: 'The capacity of chamber is required'
                         }
                     }
                 }
@@ -382,3 +382,19 @@ $("#resetbtn").click(function(){
 
 
 </script>
+
+
+<script>
+$(document).ready(function(){
+  $('.sel').select2({
+     // columns: 1,
+      placeholder: 'Select Options',
+      //selectAll: tsearch: true
+      allowClear: true,  
+  });
+
+});
+
+
+</script>
+

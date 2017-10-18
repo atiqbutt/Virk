@@ -140,7 +140,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       
                   <div class="form-group">
                     <div class="col-md-9 col-md-offset-3">
-                      <input class="btn btn-success" type="submit" name="register" value="Add" />
+                      <input class="btn btn-success" type="submit" name="register" value="Submit" />
                       <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                       <a type="submit" name="register" href='<?php echo base_url()?>Defination/routepage'; class="btn btn-danger">Cancel</a>
         

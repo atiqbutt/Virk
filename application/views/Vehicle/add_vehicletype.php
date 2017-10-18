@@ -98,7 +98,7 @@ $(document).ready(function() {
                    trigger:'blur',
                     validators: {
                         notEmpty: {
-                            message: 'The name is required and cannot be empty'
+                            message: 'The name is required'
                         }
                     }
                 },

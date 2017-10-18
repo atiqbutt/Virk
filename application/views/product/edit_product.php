@@ -10,7 +10,7 @@
            <?php endif; ?>
   <div class="box box-info">
             <div class="box-header with-border">
-              <h2 class="box-title">Update Product</h2>
+              <h2 class="box-title">Manage Product</h2>
                
             </div>
             <!-- /.box-header -->
@@ -20,7 +20,7 @@
 			<input type="hidden" name="startdate"  value="<?php echo $product->createdAt?>">             
 			 <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Name <span class="required">*</span></label>
   <input type="hidden" name="id" value="<?php echo $product->id?>">
                   <div class="col-sm-6">
                       <input type="name" name="heading" value="<?php echo $product->heading?>" onkeypress="return maskAlphaWithSp(this,event);" class="form-control" id="inputEmail3" placeholder="Name"  required>
@@ -30,7 +30,7 @@
                   
                   
                    <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Product Type:</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Product Type <span class="required">*</span></label>
 
                   <div class="col-sm-6">
                    <select class="form-control sel" name="product_type" selected="selected"  required>
@@ -43,12 +43,12 @@
                                                               
                                     <?php } ?>
                                 </select>
-<div class="error"><?php echo form_error('product_type'); ?></div>
+
                   </div>
                 </div>
 
                   <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Units:</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Units <span class="required">*</span></label>
 
                   <div class="col-sm-6">
              <select class="form-control sel" name="unit_id" selected="selected"  required>
@@ -65,7 +65,7 @@
                 </div>
 
                   <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Price:</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Price <span class="required">*</span></label>
 
                   <div class="col-sm-6">
                       <input type="name" value="<?php echo $histroy->price ?>" name="price" class="form-control" id="inputEmail3" placeholder="Name"  required>
