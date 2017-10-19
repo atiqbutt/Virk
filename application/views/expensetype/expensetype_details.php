@@ -37,27 +37,7 @@
                     
 
                         
-                        <tr>
-                       <td><strong>Created At:</strong></td>
-                       <td><?php if(isset($view)){echo ucfirst($view->createdAt);}  ?></td>
-                      </tr>
-                      
-                      <td><strong>Created By:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?>
-                        </td>
-                      
-                       
-                        <tr>
-                       <td><strong>Modified At:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->modifiedAt);}  ?></td>
-                      </tr>
-                      
-                      
-                        <tr>
-                       <td><strong>Modified By:</strong></td>
-                        <td><?php if(isset($view)){echo ucfirst($view->first." ".$view->last);}  ?></td>
-                      </tr>
-                      
+                   
                       
 
 
@@ -92,7 +72,7 @@
                     </tbody>
                   </table>
                     <a type="submit" name="register" href='<?php echo base_url()?>Defination/view_expensetype'; class="btn btn-danger"><i class="fa fa-reply"></i></a>
-                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Defination/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
+                 <a class="btn btn-primary" float:right href="<?php echo $base_url; ?>Defination/printexpensedet/<?php echo $view->id; ?>" target="_blank"><i class="fa fa-print"></i></a>
                  
                  
                  

@@ -34,6 +34,7 @@ class Vehicle_model extends CI_Model {
 	 	$this->db->select('*');
 	 	$this->db->from('vehicletype');
 	 	$this->db->where('is_deleted = ', 0);
+	 	$this->db->where('status',0);
 		$result = $this->db->get()->result();
 		return $result;
 	 }

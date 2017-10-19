@@ -1,8 +1,4 @@
-<style> 
-.content{
-  height: 150vh !important;
- } 
-</style>
+
 <form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
 <section class="content">
     <div class="row">
@@ -18,7 +14,7 @@
                   <div class="row">
                    <div class="col-md-6">
                       <div class="form-group">
-                      <label class="control-label col-sm-4">Vehicle Type:</label>
+                      <label class="control-label col-sm-4">Vehicle Type <span class="required">*</span></label>
                       <div class="col-sm-7">
                         <select class="form-control sel" name="vehicle_type">                  
                             <?php if(!empty($vehicletype)){ ?>
@@ -31,42 +27,42 @@
                       </div>
 
                       <div class="form-group">
-                      <label class="control-label col-sm-4">Registration No:</label>
+                      <label class="control-label col-sm-4">Registration No <span class="required">*</span></label>
                       <div class="col-sm-7">
                         <input class="form-control"  type="text" name="registerationno"  placeholder="Registration no...." class="form-control num"  required="required"/></div> 
                       </div>
 
 
                       <div class="form-group">
-                       <label class="control-label col-sm-4">No Of Chamber:</label>
+                       <label class="control-label col-sm-4">No Of Chamber <span class="required">*</span></label>
                         <div class="col-sm-7">
                         <input name="numberofchambe" value="1" class="form-control txt_name"  onkeypress='return ValidateNumberOnly()' type="text" required="required"  /> </div></div> 
                               
                      <div class="form-group">            
-                   <label class="control-label col-sm-4">Total Fuel Capacity:</label>
+                   <label class="control-label col-sm-4">Total Fuel Capacity</label>
                         <div class="col-sm-7">
                         <input class="form-control" id="tfc"  type="text" name="totalfuelcapacity" placeholder=""  onkeypress='return ValidateNumberOnly()' required="required" readonly /> </div> </div>  
                             
                          <div class="form-group">     
-                         <label class="control-label col-sm-4">Color:</label>
+                         <label class="control-label col-sm-4">Color <span class="required">*</span></label>
                         <div class="col-sm-7">               
                         <input class="form-control" type="text" name="color" onkeypress="return maskAlphaWithSp(this,event);" placeholder="Color...."  required="required" /> </div></div>
                        
                          <div class="form-group"> 
-                        <label class="control-label col-sm-4">Company:</label>
+                        <label class="control-label col-sm-4">Company <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="text" onkeypress="return maskAlphaWithSp(this,event);" name="company" placeholder="Company...."  required="required" /></div></div>
                                 
                           <div class="form-group"> 
-                        <label class="control-label col-sm-4">Token Expiry:</label>
+                        <label class="control-label col-sm-4">Token Expiry <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control" type="date" name="token" /></div></div>
                                 
 
                         <div class="form-group"> 
-                        <label class="control-label col-sm-4">Calibration:</label>
+                        <label class="control-label col-sm-4">Calibration <span class="required">*</span></label>
                         <div class="col-sm-7"> 
-                        <input class="form-control"  type="text" onkeypress="return maskAlphaWithSp(this,event);" name="calibration" placeholder="Company...."  required="required" /></div></div>
+                        <input class="form-control"  type="text" onkeypress="return maskAlphaWithSp(this,event);" name="calibration" placeholder="Calibration...."  required="required" /></div></div>
                                 
 
                                   
@@ -76,37 +72,37 @@
                       <div class="col-md-6">
                        <div class="form-group">
 
-                       <label class="control-label col-sm-4">chassis no:</label>
+                       <label class="control-label col-sm-4">chassis no <span class="required">*</span></label>
                         <div class="col-sm-7">
                         <input class="form-control"  type="text" name="chassisno" placeholder="Chassis no...." required="required"  />
                         </div> </div>
  
                       <div class="form-group">
-                       <label class="control-label col-sm-4">Engine No:</label>
+                       <label class="control-label col-sm-4">Engine No <span class="required">*</span></label>
                         <div class="col-sm-7">
                         <input class="form-control"  type="text" name="engineno" placeholder="Engine no...."  />
                         </div> </div> 
 
                         <div class="form-group">    
-                        <label class="control-label col-sm-4">Model:</label>
+                        <label class="control-label col-sm-4">Model <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="text" name="model"  placeholder="Model...."  /> </div> </div>
                       
                       <div class="form-group">    
-                        <label class="control-label col-sm-4">Fitness Certificate:</label>
+                        <label class="control-label col-sm-4">Fitness Certificate <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="date" name="fitness"  /> </div> </div>
 
 
                           <div class="form-group"> 
-                        <label class="control-label col-sm-4">Route Permit:</label>
+                        <label class="control-label col-sm-4">Route Permit<span>*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="date"  name="route" placeholder="Company...."  /></div></div>
                                 
 
 
                            <div class="form-group">    
-                        <label class="control-label col-sm-4">License:</label>
+                        <label class="control-label col-sm-4">License <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="date" name="License" /> </div> </div>
 
@@ -114,7 +110,7 @@
 
                          
                        <div class="form-group"> 
-                        <label class="control-label col-sm-4">Vehicle Image:</label>
+                        <label class="control-label col-sm-4">Vehicle Image<span class="required">*</span></label>
                         <div class="col-sm-7"> 
                        
          
@@ -122,9 +118,9 @@
                       </div></div>
  
                          <div class="form-group">
-                        <label class="control-label col-sm-4">Scan Document:</label>
+                        <label class="control-label col-sm-4">Scan Document <span class="required">*</span></label>
                         <div class="col-sm-7"> 
-                        <input class="form-control"  name="doc[]" multiple="accept" type="file" required="required" /> </div> </div> 
+                        <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
 
 
 
@@ -162,14 +158,14 @@
                     <div class="row">
                       <div class="col-md-12">
                       <div class="form-group"> 
-                        <div class="col-md-4 text-right"><label class="control-label">Chamber 1</label>
+                        <div class="col-md-4 text-right"><label class="control-label">Chamber 1 <span class="required">*</span></label>
                         </div>
                          <div class="col-md-8"><input value="Chamber" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>
                          </div>
                      </div>
 
                      <div class="form-group"> 
-                        <div class="col-md-4 text-right"><label class="control-label">capacity 1</label>
+                        <div class="col-md-4 text-right"><label class="control-label">capacity 1 <span class="required">*</span></label>
                         </div>
                          <div class="col-md-8"><input class="form-control fc"  id="fc"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
                                required="required"/>

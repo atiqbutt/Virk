@@ -160,7 +160,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input type="cnic" name="dob" class="form-control" id="datepicker1" placeholder="Date of Birth" value="<?php echo $edit->dob?>">
+                               <input type="cnic" name="dob" class="form-control" id="datess" placeholder="Date of Birth" value="<?php echo $edit->dob?>">
             
                         </div>
                       </div>
@@ -258,13 +258,20 @@ $do=$do;
 
  <script>
     $( function() {
-    $( "#datepicker" ).datepicker({
+     $( "#datepicker" ).datepicker({
+       changeMonth: true,
+       changeYear: true,
+        yearRange: '2002'
+
+     
+  });
+     $( "#datess" ).datepicker({
+     yearRange: '1980:2000',
       changeMonth: true,
-      changeYear: true
-    });
-     $( "#datepicker1" ).datepicker({
-      changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      
+       
+
     });
   } );
   </script>

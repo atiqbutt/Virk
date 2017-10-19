@@ -19,7 +19,7 @@
             <form class="form-horizontal" action="<?php echo base_url()?>Vehicle/Vehicle_status_update" method="post" enctype="multipart/formdata">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Name <span class="required">*</span></label>
             <input type="hidden" name="id" value=<?php echo $vehiclestatus->id?>>
                   <div class="col-sm-6">
                       <input type="name" name="name" value=<?php echo $vehiclestatus->heading ?>  onkeypress="return maskAlphaWithSp(this,event);"  class="form-control" id="inputEmail3" placeholder="Name" required>

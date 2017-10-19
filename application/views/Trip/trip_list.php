@@ -257,8 +257,31 @@
               </td>
 
 
+               <td>
+                  <table>
+                  <?php foreach ($amb['trip_products'] as $value){
+                    if($amb['stn_no'] == "" || $amb['tracking_report'] == "" || $amb['IsExpenseAdded'] == 0){ ?>
+                <tr class="odd gradeX" style="background: #ff7f7f" >
+                <?php }else {?>
+                <tr class="odd gradeX" style="background: #98FB98">
+                <?php } ?>
+                    
+                   
+                  <tr>
+                     <td class="special"><?php echo $value['servicecharges'] ?> </td>
+                  </tr> 
+
+                  <?php } ?>
+
+                </table>
+
+              </td>
+
+
+
+
         			<!-- 	<td> <?php echo $amb["remaining_commission"];?> </td> -->
-        				<td> <?php echo $amb["servicecharges"];?></td>
+        				<!-- <td> <?php echo $amb["servicecharges"];?></td> -->
                 <td style="width:100px"><a href="<?php echo base_url()?>Trip/edit_trip/<?php echo $amb['id'];?>"><i class="fa fa-eye"></i></a></td>
                 </tr>
 	         <?php  } }?>
