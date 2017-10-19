@@ -56,13 +56,10 @@
                       <td><?php echo $value["company"];?></td>
                        <td>
 
-  <?php if ($value["vehstat"]=="0"){?>
-                                                                      
-<a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showstates/<?php echo $value['id'];?>">
-  <img src="<?php echo base_url();?>assets/Images/2.png" width="20px" height="20px"></a>
-                                              
-                                        
+            <?php if ($value["vehstat"]=="0"){?>
 
+            <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showstates/<?php echo $value['id'];?>">
+            <img src="<?php echo base_url();?>assets/Images/2.png" width="20px" height="20px"></a>
                                     <?php } elseif($value["vehstat"]=="1") {?>
                                                    
                                                     <a class="text-custom1" href="<?php echo base_url();?>Vehicle/List_showactive/<?php echo $value['id'];?>"><img src="<?php echo base_url();?>assets/Images/3.png" width="20px" height="20px"></a>

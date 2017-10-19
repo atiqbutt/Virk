@@ -1,11 +1,4 @@
 <script src="<?php echo base_url()?>assets/commonFormValidator.js" type="text/javascript"></script>
-
-
-
-
-
-
-
  <section class="content">
       <div class="row">
            <div class="col-md-12">
@@ -24,7 +17,7 @@
                    <form id="defaultForm" class="form-horizontal" action="<?php echo base_url()?>unit/save" method="post" enctype="multipart/formdata">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label">Name <span class="required">*</span></label>
 
                   <div class="col-sm-6">
                       <input type="name" name="name" class="form-control" onkeypress="return maskAlphaWithSp(this,event);"  id="inputEmail3" placeholder="Name" required>
