@@ -362,8 +362,55 @@ $this->vehicle_model->save('vehicle_document', $op);
 
 
 
+       public function add_token()
+       {
+
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $data['vehicle'] = $this->db->query("SELECT `id`, `heading` FROM `vehicle` WHERE `is_deleted` = 0")->result_array();
+        $data["page"]='Vehicle/add_token';
+        $this->load->view('Template/main',$data);
+         
+       }
+
+
+       public function view_token()
+       {
+
+        $data['menu'] = $this->load_model->menu();
+        $data['base_url'] = base_url();
+        $data['userInfo'] = $this->userInfo;
+        $data['tokens'] = $this->db->query("SELECT * FROM vehicle_token WHERE `is_delete` = 0")->result_array();
+        $data["page"]='Vehicle/view_token';
+        $this->load->view('Template/main',$data);
+           
+       }
+
+
+    public function save_token()
+       {
+
+        if ($this->input->post()) {
+            
+            $data = $this->input->post();
+
+            $this->db->insert('vehicle_token', $data);    
+            redirect('Vehicle/view_token','refresh');
+        }else{
+
+            redirect('Vehicle/add_token','refresh');
+        }
+        
+           
+       }
+
+
+
 //==============================Vehicle_Status work starts from here===============
-     public function Vehicle_Status_list()
+    
+
+public function Vehicle_Status_list()
      {
      $data['menu'] = $this->load_model->menu();
         $data['base_url'] = base_url();

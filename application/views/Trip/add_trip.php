@@ -252,25 +252,26 @@
                     <div class="col-lg-3 paddinglr2" style="float:left;">
                       <div class="form-group">
                       <label>Product </label>
-                      <select id="product_id"  class="form-control product sel" name="product_id"  ><option value="">Select Options</option><?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option><?php }} ?>
+                      <select id="product_id"  class="form-control product sel" name="product_id"  >
+                      <option value="">Select Options</option>
+                      <?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option>
+                      <?php }} ?>
                       </select>
                       </div>
                     </div>
 
                   <div class="col-lg-3 paddinglr2">
-                    <div class="form-group"><label>Quantity</label><input  id="product_quantity"  class="quantity form-control"  type="text" name="product_quantity" onkeypress='return ValidateNumberOnly()'/>
+                    <div class="form-group"><label>Temperature</label><input class="form-control" id="product_temperature"   type="text" name="product_temperature"   onkeypress='return ValidateNumberOnly()' />
                     </div>
                   </div>
-              </div>
+
+          </div>
+          <!-- row -->
+
 
 
          <div class="row">
-         
-              <div class="col-lg-3 paddinglr2">
-                <div class="form-group"><label>Temperature</label><input class="form-control" id="product_temperature"   type="text" name="product_temperature"   onkeypress='return ValidateNumberOnly()' />
-                </div>
-              </div>
-
+      
               <div class="col-lg-3 paddinglr2">
                 <div class="form-group"><label>Gravity</label>
                 <input id="product_gravity" class="form-control" type="text" name="product_gravity"  onkeypress='return ValidateNumberOnly()' />
@@ -278,34 +279,48 @@
               </div> 
 
               <div class="col-lg-3 paddinglr2">
+                  <div class="form-group"><label>Quantity</label><input  id="product_quantity"  class="quantity form-control"  type="text" name="product_quantity" onkeypress='return ValidateNumberOnly()'/>
+                  </div>
+              </div>
+
+              <div class="col-lg-3 paddinglr2">
                 <div class="form-group"><label>Freight Rate</label>
                 <input id="freight_rate" class="form-control"  type="text" id="freight_rate" name="freight_rate"  onkeypress='return ValidateNumberOnly()' />
                 </div> 
               </div>
 
+
+            <div class="col-lg-3 paddinglr2">
+              <div class="form-group"><label>Milli At Start</label>
+              <input  class="form-control"  type="text" id="milli_start" name="milli_start"  onkeypress='return ValidateNumberOnly()' />
+              </div> 
+            </div>
+
           </div>
           <!-- row -->
+
+
 
           <div class="row">
             
             <div class="col-lg-2 paddinglr2">
-              <strong>Total-Frt:&nbsp&nbsp </strong><span id="Total_Frt"></span>
+              <strong>Total-Frt:&nbsp&nbsp </strong><span id="Total_Frt">0.00</span>
             </div>
 
             <div class="col-lg-2 paddinglr2">
-              <strong>Cont-Comsn:&nbsp&nbsp </strong><span id="Cont_Comsn"></span>
+              <strong>Cont-Comsn:&nbsp&nbsp </strong><span id="Cont_Comsn">0.00</span>
             </div>
 
             <div class="col-lg-2 paddinglr2">
-            <strong>Comp-Comsn:&nbsp&nbsp</strong><span id="Comp_Comsn"></span>
+            <strong>Comp-Comsn:&nbsp&nbsp</strong><span id="Comp_Comsn">0.00</span>
             </div>
 
             <div class="col-lg-2 paddinglr2">
-              <strong>W.H.T:&nbsp&nbsp</strong><span id="wht"></span>
+              <strong>W.H.T:&nbsp&nbsp</strong><span id="wht">0.00</span>
             </div>
 
             <div class="col-lg-2 paddinglr2">
-              <strong>Cstm-Frt:&nbsp&nbsp</strong><span id="Cstm_Frt"></span>
+              <strong>Cstm-Frt:&nbsp&nbsp</strong><span id="Cstm_Frt">0.00</span>
             </div>
 
           </div>
@@ -337,14 +352,13 @@
                   <thead>
                     <tr>
                       <th>Source</th>
-
                       <th>Destination</th>
                       <th>Product</th>
-
-                      <th>Product QTY</th>
-                      <th>Product Rate</th>
-					  <th>Product Gravity</th>
-					  <th>Freight Rate</th>
+                      <th>Quantity</th>
+                      <th>Rate</th>
+          					  <th>Gravity</th>
+          					  <th>Freight Rate</th>
+                      <th>Milli at Start</th>
                     </tr>
                    </thead>
                     <tbody id="prod_info" >
@@ -450,8 +464,6 @@
                       </select> 
                   </div>
 
-
-
                   </div>
                   <!-- panel-body -->
               </div>
@@ -461,9 +473,9 @@
             </div>
             <!-- col-lg-4 -->
             
-              <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 25px">
-                  <input id="trip_save" class="btn btn-primary" type="submit" name="register" value="Save Trip" />
-              </div>  
+            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 25px">
+                <input id="trip_save" class="btn btn-primary" type="submit" name="register" value="Save Trip" />
+            </div>  
 
 
         </form>
@@ -549,9 +561,11 @@ $(document).ready(function() {
 
         var vech_info = "<div><strong>Chassis Number:</strong>" +"&nbsp&nbsp;"+ result['chassisno'] +"<br><strong> Engine Number: </strong>" +"&nbsp&nbsp"+ result['engineno'] +"</div>"
         
-        var input = '<input type="hidden" id="test" value="'+ result['numberofchamber1'] + '">';
+        var input = '<input type="hidden" name="noofchamb" value="'+ result['numberofchamber1'] + '"><input type="hidden" name="capofchamb"  value="'+ result['capacityofchamber'] + '">';
+
 
           $('#vech_info').html(vech_info + input).show();
+
            
         }
     })
@@ -575,7 +589,11 @@ $(document).ready(function() {
       
       success:  function (response) {
          var result =JSON.parse(response);
-         var carriageCommission = result[0].freight_commission;
+         if (result == "") {
+          var carriageCommission = "";
+         }else{
+          var carriageCommission = result[0].freight_commission;
+         }
          $('#carriage_commission').val(carriageCommission);
          
             }
@@ -601,9 +619,13 @@ $(document).ready(function() {
          success:  function (response) {
          var result =JSON.parse(response);
 
-         var company_commission = result[0].commission_1;
+         if (result == "") {
+         var company_commission = "";
+         var withholding_tax = "";
+         }else{
+           var company_commission = result[0].commission_1;
          var withholding_tax = result[0].withholding_tax;
-         
+         }
          $('#company_commission').val(company_commission);
          $('#withholding_tax').val(withholding_tax);
           var total_commission = 100; 
@@ -714,26 +736,25 @@ $(document).ready(function() {
       var product_temperature = $("#product_temperature").val();
       var product_gravity = $("#product_gravity").val();
       var freight_rate = $("#freight_rate").val();
+      var milli_start = $("#milli_start").val();
 
 
 
-      var proInfo = "<tr><td><input type='hidden' class='proSource' name='source[]'  value='' >"+ source_name +"</td><td><input type='hidden' class='proDest' name='destination[]'  value='' >"+ destination_name +"</td><td><input type='hidden' id='proID' class='proID' name='product_id[]'  value=''>"+ product_name +"</td><td><input type='hidden' class='proQty' name='product_quantity[]'  value=''>"+ product_quantity +"</td><td><input type='hidden' class='proTemp' name='product_temperature[]'  value=''>"+ product_temperature +"</td><td><input type='hidden' class='proGrav' name='product_gravity[]'  value=''>"+ product_gravity +"</td><td><input type='hidden' class='proFret' name='freight_rate[]'  value=''>"+ freight_rate +"</td></tr>";
-
+      var proInfo = "<tr><td><input type='hidden' class='proSource' name='source[]'  value='' >"+ source_name +"</td><td><input type='hidden' class='proDest' name='destination[]'  value='' >"+ destination_name +"</td><td><input type='hidden' id='proID' class='proID' name='product_id[]'  value=''>"+ product_name +"</td><td><input type='hidden' class='proQty' name='product_quantity[]'  value=''>"+ product_quantity +"</td><td><input type='hidden' class='proTemp' name='product_temperature[]'  value=''>"+ product_temperature +"</td><td><input type='hidden' class='proGrav' name='product_gravity[]'  value=''>"+ product_gravity +"</td><td><input type='hidden' class='proFret' name='freight_rate[]'  value=''>"+ freight_rate +"</td><td><input type='hidden' class='MilStr' name='milli_start[]'  value=''>"+ milli_start +"</td></tr>";
 
 
         $("#addpro").removeAttr('style');
 
 
 
-        if (product_id == "" ) {
-          alert("Please fill all fields");
-        }else{
+          if (product_id == "" ) {
+            alert("Please fill all fields");
+          }else{
 
-         $('#prod_info').append(proInfo);
+           $('#prod_info').append(proInfo);
 
-        }
+          }
          
-         console.log($('.proQty').length);
          if($('.proQty').length==$('#test').val()){
           $('.pview').hide();
          }
@@ -746,16 +767,18 @@ $(document).ready(function() {
         $(".proTemp").val(product_temperature);
         $(".proGrav").val(product_gravity);
         $(".proFret").val(freight_rate);
+        $(".MilStr").val(milli_start);
 
-
-
-        $("#product_id").val("");
-        $("#source").val("");
-        $("#destination").val("");
+      
+        $("#product_id").html("");
+        $("#source").html("");
+        $("#destination").html("");
         $("#product_quantity").val("");
         $("#product_temperature").val("");
         $("#product_gravity").val("");
         $("#freight_rate").val("");
+        $("#milli_start").val("");
+
 
 
         $('#Total_Frt').html("");
@@ -779,10 +802,10 @@ $(document).ready(function() {
           alert("Please add atleat one product !");
           e.preventDefault();
         }
-        else{
-          $(this).unbind('submit').submit();
-          $(this).submit();
-        }
+        // else{
+        //   $(this).unbind('submit').submit();
+        //   $(this).submit();
+        // }
 
 
       });
@@ -819,6 +842,14 @@ $(document).ready(function() {
             },
             fields: {
                 type: {
+                   trigger:'change  blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'field  is required and cannot be empty'
+                        }
+                    }
+                },
+              customer_id: {
                    trigger:'change  blur',
                     validators: {
                         notEmpty: {
@@ -1072,13 +1103,19 @@ $(document).ready(function() {
 
 <script>
 $('.sel').select2({
-      // tags: "true",
-    // minimumResultsForSearch: 20 ,
-    selectOnClose: true,
-   placeholder: "Select an option",
-  
+      
+     //selectOnClose: true,
+     placeholder: "Select an option",
+     allowClear:true
 
 });
 
+
 </script>
 
+
+
+
+
+
+   

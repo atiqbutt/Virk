@@ -129,7 +129,6 @@ public function delete_contractor_customer($id)
 	}
 
 
-
 	public function get_customer_comm()
 	{		
 
