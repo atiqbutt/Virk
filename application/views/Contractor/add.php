@@ -309,7 +309,7 @@ $(document).ready(function(){
                 validators: {
                     
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
                             message: 'Phone number is not valid'
                         },
