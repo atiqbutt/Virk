@@ -74,7 +74,7 @@
                 </div>
                 
 
-             <div class="col-lg-3  paddinglr5">
+                <div class="col-lg-3  paddinglr5">
                  <div class="form-group"> 
                     <label>customer</label>
                       <select id="customer" class="form-control sel" name="customer_id" selected="selected" >

@@ -12,7 +12,7 @@ class Vehicle extends CI_Controller {
 	$this->load->library('form_validation');
 	$this->load->library('image_lib');
     $this->load->model('user_model');
-     $this->load->model('Vehicle_model');
+    $this->load->model('Vehicle_model');
     $this->load->model('load_model');
     $this->user_model->check_login("admin");
     $this->userInfo = $this->user_model->userInfo("first_name,last_name");
@@ -71,8 +71,7 @@ class Vehicle extends CI_Controller {
     $fitness= $this->input->post('fitness');
     $route= $this->input->post('route');
     $licesnce= $this->input->post('License');
-
-   
+  
     $totfuel= $this->input->post('totalfuelcapacity');
     $color= $this->input->post('color');
     $comp= $this->input->post('company');
@@ -81,7 +80,7 @@ class Vehicle extends CI_Controller {
     $url2=$this->do_upload2();
    
      $admin=json_decode(base64_decode($this->session->admin),true);
-        $id=$admin['id'];
+     $id=$admin['id'];
                     $field=array(
                     'vehicle_type'=>$vec,
                     'registerationno'=>$reg,
@@ -362,48 +361,6 @@ $this->vehicle_model->save('vehicle_document', $op);
 
 
 
-       public function add_token()
-       {
-
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        $data['vehicle'] = $this->db->query("SELECT `id`, `heading` FROM `vehicle` WHERE `is_deleted` = 0")->result_array();
-        $data["page"]='Vehicle/add_token';
-        $this->load->view('Template/main',$data);
-         
-       }
-
-
-       public function view_token()
-       {
-
-        $data['menu'] = $this->load_model->menu();
-        $data['base_url'] = base_url();
-        $data['userInfo'] = $this->userInfo;
-        $data['tokens'] = $this->db->query("SELECT * FROM vehicle_token WHERE `is_delete` = 0")->result_array();
-        $data["page"]='Vehicle/view_token';
-        $this->load->view('Template/main',$data);
-           
-       }
-
-
-    public function save_token()
-       {
-
-        if ($this->input->post()) {
-            
-            $data = $this->input->post();
-
-            $this->db->insert('vehicle_token', $data);    
-            redirect('Vehicle/view_token','refresh');
-        }else{
-
-            redirect('Vehicle/add_token','refresh');
-        }
-        
-           
-       }
 
 
 
