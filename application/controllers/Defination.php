@@ -973,6 +973,9 @@
 
               }
 
+
+             
+
               public function addagent()
               {
               $data['menu'] = $this->load_model->menu();
@@ -2083,6 +2086,14 @@
               $this->load->view('Template/main',$data);
 
               }
+
+                public function printexpensedet($p='')
+              {
+
+              $data['view']=$this->db->where('id',$p)->get('expensetype')->row();
+              $this->load->view('expensetype/expense_p',$data);
+              }
+
 
 
               public function view_expensetype()

@@ -37,7 +37,6 @@ class Vehicle extends CI_Controller {
         $id=$this->uri->segment(3);
         $data['view']=$this->Vehicle_model->vehicleDetails($id);
         $data['view2']=$this->Vehicle_model->vehiclejoinvehicd($id);
-
         $data['page']='Vehicle/vehicle_details';
         $this->load->view('Template/main',$data);          
         }
