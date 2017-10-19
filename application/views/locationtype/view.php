@@ -5,15 +5,32 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $('#example').DataTable( {
+    $('#location').DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, ':visible' ]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2 ]
+                }
+            }
+            
         ]
     } );
 } );
 </script>
-
 
 
  <!-- /.row -->

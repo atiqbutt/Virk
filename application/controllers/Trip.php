@@ -112,7 +112,9 @@ class trip extends CI_Controller {
 			$data['tripid'] = $id;
 			$data["trip_info"]=$this->trip_model->GetSpecificTrip($id);
 
+            $vechileid = $data["trip_info"][0]['vechileid'];
 
+            $data["vech_info"]=$this->trip_model->GetVechInfo($vechileid);
 
             $data["driver1"]=$this->db->query('select driverinformation.id as did,driverinformation.name as name FROM trip_members tm JOIN tripmanagement ON tm.trip_id=tripmanagement.id JOIN driverinformation ON driverinformation.id=tm.member_id where tripmanagement.is_deleted=0 AND tm.trip_id='.$id.' union SELECT helperinformation.id as did,helperinformation.name as name FROM tripmanagement JOIN trip_members tme on tme.trip_id=tripmanagement.id join helperinformation ON helperinformation.id=tme.member_id where tripmanagement.is_deleted=0 AND tme.trip_id='.$id.' GROUP BY tme.type')->result_array();
 
@@ -122,6 +124,7 @@ class trip extends CI_Controller {
             $data["filledby"]=$this->trip_model->FilledBy($filledBy);
             $data["helper"]=$this->trip_model->GetTripHelper($id);
             $data["products"]=$this->trip_model->GetTripProducts($id);
+            
 
 
             $data["source"]=$this->trip_model->GetSourceOrDest($data["products"][0]['source']);
@@ -151,35 +154,74 @@ class trip extends CI_Controller {
             $data["uncanned_by"]=$this->input->post('uncanned_by'); 
             $data["closing_gravity"]=$this->input->post('closing_gravity');
             $data["closing_temp"]=$this->input->post('closing_temp');
+
             $file =$this->do_upload();  
 
             $data["tracking_report"]=$file["upload_data"]["file_name"];
             $data["status"]= 1; 
 
-            $shrt_at_dest  = $this->input->post('shrt_at_dest[]'); 
-            $shrt_at_decan = $this->input->post('shrt_at_decan[]'); 
+            $shortage=$this->input->post('shortage');
+            $short_price=$this->input->post('short_price');
+            $milli_at_start  = $this->input->post('milli_at_start[]'); 
+            $milli_at_dest  = $this->input->post('milli_at_dest[]'); 
+            $milli_after_decan = $this->input->post('milli_after_decan[]'); 
 
 
-            $insrt_shrt_at_dest = array();
-                foreach ($shrt_at_dest as $value) {
-                $insrt_shrt_at_dest[]=array(
-                    'shrt_at_dest'=>$value,
+
+            $insrt_shortage = array();
+                foreach ($shortage as $value) {
+                $insrt_shortage[]=array(
+                    'shortage'=>$value,
                     'trip_id' => $tripid
                     );
                 }
 
-            $this->db->update_batch('tripproduct', $insrt_shrt_at_dest, 'trip_id');
+            $this->db->update_batch('tripproduct', $insrt_shortage, 'trip_id');
 
 
-              $insrt_shrt_at_decan = array();
-                foreach ($shrt_at_decan as $value) {
-                $insrt_shrt_at_decan[]=array(
-                    'shrt_at_decan'=>$value,
+            $insrt_short_price= array();
+                foreach ($short_price as $value) {
+                $insrt_short_price[]=array(
+                    'short_price'=>$value,
                     'trip_id' => $tripid
                     );
                 }
 
-            $this->db->update_batch('tripproduct', $insrt_shrt_at_decan, 'trip_id');
+            $this->db->update_batch('tripproduct', $insrt_short_price, 'trip_id');
+            
+
+            $insrt_milli_at_start = array();
+                foreach ($milli_at_start as $value) {
+                $insrt_milli_at_start[]=array(
+                    'milli_at_start'=>$value,
+                    'trip_id' => $tripid
+                    );
+                }
+
+            $this->db->update_batch('tripproduct', $insrt_milli_at_start, 'trip_id');
+
+
+              $insrt_milli_at_dest = array();
+                foreach ($milli_at_dest as $value) {
+                $insrt_milli_at_dest[]=array(
+                    'milli_at_dest'=>$value,
+                    'trip_id' => $tripid
+                    );
+                }
+
+            $this->db->update_batch('tripproduct', $insrt_milli_at_dest, 'trip_id');
+
+
+
+              $insrt_milli_after_decan = array();
+                foreach ($milli_after_decan as $value) {
+                $insrt_milli_after_decan[]=array(
+                    'milli_after_decan'=>$value,
+                    'trip_id' => $tripid
+                    );
+                }
+
+            $this->db->update_batch('tripproduct', $insrt_milli_after_decan, 'trip_id');
                     
             $this->db->where('id', $tripid);
             $this->db->update("tripmanagement",$data);
@@ -276,6 +318,8 @@ class trip extends CI_Controller {
             $data["email_date"]=$this->input->post('email_date'); 
             $data["filling_date"]=$this->input->post('filling_date'); 
             $data["filled_by"]=$this->input->post('filled_by'); 
+            $data["noofchamb"]=$this->input->post('noofchamb'); 
+            $data["capofchamb"]=$this->input->post('capofchamb'); 
 
 
             $this->db->insert("tripmanagement",$data);
@@ -289,6 +333,7 @@ class trip extends CI_Controller {
             $product_temperature = $this->input->post('product_temperature');
             $product_gravity = $this->input->post('product_gravity');
             $freight_rate = $this->input->post('freight_rate');
+            $milli_start = $this->input->post('milli_start');
 
 
             if (!empty($product_quantity)) {
@@ -304,6 +349,7 @@ class trip extends CI_Controller {
                    'product_gravity'=>$product_gravity[$i],
                    'product_temperature'=>$product_temperature[$i],
                    'product_quantity'=>$product_quantity[$i],
+                   'milli_at_start'=>$milli_start[$i],
                    'product_id'=>$product_id[$i]
                     );
                 }
@@ -477,7 +523,7 @@ public function all_close_trip()
 
         public function do_upload()
         {
-            $config['upload_path']          = '../Uploads/';
+            $config['upload_path']          = './Uploads/';
             $config['allowed_types']        = 'pdf|doc|docx';
             $config['max_size']             = 100;
             $config['max_width']            = 1024;
@@ -508,49 +554,6 @@ public function all_close_trip()
         return $file;
     }
 
-/*
-        public function self_long()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsSelfLong();
-            $data["page"]='Trip/self_long';
-            $this->load->view('Template/main',$data);
-
-        }
-        
-        public function self_short()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsSelfShort();
-            $data["page"]='Trip/self_short';
-            $this->load->view('Template/main',$data);
-
-        }
-        public function general_long()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralLong();
-            $data["page"]='Trip/general_long';
-            $this->load->view('Template/main',$data);
-
-        }
-           public function general_short()
-        {
-            $data['menu'] = $this->load_model->menu();
-            $data['base_url'] = base_url();
-            $data['userInfo'] = $this->userInfo;  
-            $data["tripmanagement"]=$this->trip_model->GetAllTripsGeneralShort();
-            $data["page"]='Trip/general_short';
-            $this->load->view('Template/main',$data);
-
-        }
-*/
 
 
 

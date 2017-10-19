@@ -107,46 +107,6 @@ function GetSpecificTrip($id) {
         return $w->result_array();}
         else {return FALSE; }
     }
-/*function GetAllTripsGeneralShort() {
-  $this->db->select()
-        ->from('get_all_trips')
-        ->where('type',"General-Short");
-     //  ->order_by("id","DESC");
-        $w=$this->db->get();
-        if ($w->num_rows() > 0){
-        return $w->result_array();}
-        else {return FALSE; }
-    }
-function GetAllTripsGeneralLong() {
-  $this->db->select()
-        ->from('get_all_trips')
-        ->where('type',"General-Long");
-     //  ->order_by("id","DESC");
-        $w=$this->db->get();
-        if ($w->num_rows() > 0){
-        return $w->result_array();}
-        else {return FALSE; }
-    }
-function GetAllTripsSelfLong() {
-     $this->db->select()
-        ->from('get_all_trips')
-        ->where('type',"Self-Long");
-     //  ->order_by("id","DESC");
-        $w=$this->db->get();
-        if ($w->num_rows() > 0){
-        return $w->result_array();}
-        else {return FALSE; }
-    }
-function GetAllTripsSelfShort() {
-  $this->db->select()
-        ->from('get_all_trips')
-        ->where('type',"Self-Short");
-     //  ->order_by("id","DESC");
-        $w=$this->db->get();
-        if ($w->num_rows() > 0){
-        return $w->result_array();}
-        else {return FALSE; }
-    }	*/
 
 
 public function getAllRecords($table,$where,$by,$order) {
@@ -183,6 +143,15 @@ public function getAllRecords($table,$where,$by,$order) {
     
     }
 
+    public function GetVechInfo($vechid)
+    {
+
+       $this->db->select('numberofchamber1, capacityofchamber')->from('vehicle')->where('id', $vechid);
+       $query=$this->db->get()->result_array();
+       return $query;
+      
+    }
+
 
     public function GetTripProducts($id)
     {
@@ -190,6 +159,7 @@ public function getAllRecords($table,$where,$by,$order) {
        $query=$this->db->get()->result_array();
        return $query;
     }
+
 
 
     public function FilledBy($filledBy)

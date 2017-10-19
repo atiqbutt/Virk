@@ -71,14 +71,14 @@
               </div>  
 
 
-                <div class="col-lg-3  paddinglr5">
-                     <div class="form-group"> 
-                        <label>Company</label>
-                        <?php if (!empty($trip_info['0']['comname'])): ?>
-                          <input class="form-control" type="text"  value="<?php echo  $trip_info['0']['comname'] ?>" readonly/>
-                           <?php endif ?>
-                      </div>
-                  </div>  
+              <div class="col-lg-3  paddinglr5">
+                   <div class="form-group"> 
+                      <label>Company</label>
+                      <?php if (!empty($trip_info['0']['comname'])): ?>
+                        <input class="form-control" type="text"  value="<?php echo  $trip_info['0']['comname'] ?>" readonly/>
+                         <?php endif ?>
+                    </div>
+                </div>  
 
 
                 <div class="col-lg-3 paddinglr5">
@@ -175,7 +175,6 @@
           </div>  
           <!-- row -->
 
-          <div class="row">
             
               <script>
               
@@ -206,17 +205,35 @@
 
               </script>
 
-            
-            <div class="col-lg-3 " style="padding-left: 25px">           
+        <div class="row" style="padding: 0 5px">
+
+            <div class="col-lg-3 ">           
                 <div class="form-group"> 
-                     <p ><Strong>Travelled Distance</Strong>:<span id="travelledDis"></span> </p>
-                     <p><Strong>Avarage</Strong>:<span id="fc"></span>  </p>
+                  <div class="well well-sm"><Strong>Travelled Distance</Strong>:&nbsp<span id="travelledDis">0</span></div>
+                </div>
+             </div>
+
+            <div class="col-lg-3 " style="padding-left: 10px">           
+                <div class="form-group"> 
+                  <div class="well well-sm"><Strong>Avarage</Strong>:&nbsp<span id="fc">0</span></div>
+                </div>
+             </div>
+
+             <div class="col-lg-3 " style="padding-left: 10px">           
+                <div class="form-group"> 
+                  <div class="well well-sm"><Strong>No of Chambers</Strong>:&nbsp<span><?php echo !empty($vech_info[0]['numberofchamber1']) ?  $vech_info[0]['numberofchamber1'] : 0 ?></span></div>
+                </div>
+             </div>
+
+             <div class="col-lg-3 " style="padding-left: 10px">           
+                <div class="form-group"> 
+                  <div class="well well-sm"><Strong>Fuel Capacity</Strong>:&nbsp<span><?php echo !empty($vech_info[0]['numberofchamber1']) ?  $vech_info[0]['capacityofchamber'] : 0 ?></span></div>
                 </div>
              </div>
 
 
           </div>
-            <!-- row -->
+      <!-- row -->
 
 
 
@@ -225,7 +242,7 @@
 
       <!--Add Product -->
                 
-         <div class="panel panel-default" style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;">
+    <div class="panel panel-default" style="margin-bottom:0px;margin-top:0px;padding-top:0px;padding-bottom:0px;">
           <div class="panel-heading"><i class="fa fa-bus" aria-hidden="true"></i>
           Product Information </div>
 
@@ -237,14 +254,18 @@
                     <thead>
                       <tr>
                         <th>Source</th>
-                        <th>Destination</th>
-                        <th>Product</th>
-                        <th>Product Quantity</th>
-                        <th>Product Temperature</th>
-                        <th>Product Gravity</th>
+                        <th>Dest</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Temp</th>
+                        <th>Gravity</th>
                         <th>Freight Rate</th>
-                        <th>Shrt At Destination  </th>
-                        <th>Shrt After Decan</th>
+                        <th>Milli At Start</th>
+                        <th>Milli At Dest </th>
+                        <th>Short</th>
+                        <th>Price</th>
+                        <th>Milli After Decan</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -253,14 +274,28 @@
                           <td><?php echo $source['name']; ?></td>
                           <td><?php echo $destination['name']; ?></td>
                           <td><?php echo $value['heading']; ?></td>
-                          <td><?php echo $value['product_quantity']; ?></td>
+                          <td id="price"><?php echo $value['price']; ?></td>
+                          <td ><?php echo $value['product_quantity']; ?>
+                          <input id="tqty" type="hidden" value="<?php echo $value['product_quantity']; ?>">
+                          </td>
                           <td><?php echo $value['product_temperature']; ?></td> 
                           <td><?php echo $value['product_gravity']; ?></td>
-                          <td><?php echo $value['freight_rate']; ?></td> 
-                          <td><input class="form-control"  type="text" name="shrt_at_dest[]" onkeypress='return ValidateNumberOnly()'  />
+                          <td><?php echo $value['freight_rate']; ?></td>
+                          <td ><?php echo $value['milli_at_start']; ?> 
+                          <input id="milli_start" name="milli_at_start[]" type="hidden" value="<?php echo $value['milli_at_start']; ?>">
+                          </td> 
+                          <td><input  id="milli_dest"  name="milli_at_dest[]" class="form-control"  type="text" name="milli_at_dest[]" onkeypress='return ValidateNumberOnly()'  required />
                           </td>
-                          <td><input class="form-control"  type="text" name="shrt_at_decan[]" onkeypress='return ValidateNumberOnly()'  />
+
+                          <td><input  id="shrt" class="form-control"  type="text" name="shortage[]" onkeypress='return ValidateNumberOnly()'  readonly />
                           </td>
+
+                           <td><input id="shrtPrice" class="form-control"  type="text" name="short_price[]" onkeypress='return ValidateNumberOnly()'  readonly />
+                          </td>
+
+                          <td><input class="form-control"  type="text" name="milli_after_decan[]" onkeypress='return ValidateNumberOnly()'  required/>
+                          </td>
+
                       </tr>   
                     <?php endforeach ?>                 
                     </tbody>
@@ -415,6 +450,37 @@ if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 46  )
 }
 
 </script>
+
+
+<script>
+
+  $("#shrt").val(0);
+  $("#shrtPrice").val(0); 
+
+  $("#milli_dest").on('blur', function(event) {
+    
+      var milli_dest =  $(this).val();
+      var total_qty =  $("#tqty").val();
+      var milli_start =  $("#milli_start").val();  
+      var divid = total_qty/ milli_start;
+      var res  =  divid * milli_dest;
+      $("#shrt").val(res);
+      var short =  $("#shrt").val();    
+      var price =  $("#price").text();  
+
+      var shrtPrice = price * short ;
+      $("#shrtPrice").val(shrtPrice); 
+      
+
+  });
+
+
+
+</script>
+
+
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {
