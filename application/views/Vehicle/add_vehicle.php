@@ -20,7 +20,7 @@
                       <div class="form-group">
                       <label class="control-label col-sm-4">Vehicle Type:</label>
                       <div class="col-sm-7">
-                        <select class="form-control sel" name="vehicle_type" selected="selected" required >                  
+                        <select class="form-control sel" name="vehicle_type">                  
                             <?php if(!empty($vehicletype)){ ?>
                             <option value="" >Select Options</option> 
                             <?php   foreach ($vehicletype as $v){ ?>        
@@ -433,14 +433,19 @@ $("#resetbtn").click(function(){
 </script>
 
 
+
 <script>
-$('.sel').select2({
-      // tags: "true",
-    // minimumResultsForSearch: 20 ,
-    selectOnClose: true,
-   placeholder: "Select an option",
-   
+$(document).ready(function(){
+  $('.sel').select2({
+     // columns: 1,
+      placeholder: 'Select Options',
+      //selectAll: tsearch: true
+      allowClear: true,  
+  });
 
 });
 
 </script>
+
+
+

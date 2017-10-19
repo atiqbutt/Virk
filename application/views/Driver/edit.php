@@ -65,12 +65,16 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                    <div class="col-md-6 col-sm-6 col-xs-12">
                       <select id="vehicle" class="form-control" name="type" required>
                          <option value="">Select Options</option>       
-                          <option value="Primary">Primary</option>   
-                          <option value="Secondary">Secondary</option>   
+                        
+                           <option value="Primary"<?php if ($edit->type == 'Primary') echo 'selected="selected"'; ?>>Primary</option>  
+                          <option value="Secondary" <?php if($edit->type=='Secondary') echo 'selected="selected"'; ?>>Secondary</option>   
                           </option>               
                       </select> 
                     </div>
                 </div>
+
+
+               
 
                 <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
@@ -87,8 +91,21 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $edit->number?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
-                        
+                          <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+
+                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $num2[0]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                        <br>
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                          <input class="form-control" type="text" id="phone" name="phone[]"  value="<?php echo $num2[1]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                        <?php
+                    }
+                        ?>
                         </div>
                            <div class="col-lg-2">
                                <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>

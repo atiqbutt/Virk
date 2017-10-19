@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -8,7 +8,7 @@ $(document).ready(function() {
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
-           
+           x++;
            $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" ></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
             var field=$( "input[name='phone[]']" ).last();
             $('#shippingForm').bootstrapValidator('addField', field); 
@@ -73,7 +73,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                            <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                         
                         </div>
                            <div class="col-lg-2">
@@ -92,7 +92,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="cnic" name="cnic" class="form-control" id="inputEmail3"  onkeypress='return ValidateNumberOnly()' placeholder="Enter Cnic Without dashes" value="<?php echo set_value('cnic');?>">
+                              <input type="cnic" name="cnic" class="form-control" id="inputEmail3"  maxlength="13" onkeypress='return ValidateNumberOnly()' placeholder="Enter Cnic Without dashes" value="<?php echo set_value('cnic');?>">
                      </div>
                       </div>
                     
@@ -116,7 +116,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="cnic" name="dob" class="form-control" id="datepicker1" placeholder="Date of Birth"   value="<?php echo set_value('dob');?>">
+                    <input type="text" name="dob" class="form-control" id="datess" placeholder="Date of Birth">
                         </div>
                       </div>
                     
@@ -125,7 +125,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Joining <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input type="cnic" name="doj" class="form-control" id="datepicker" placeholder="Date of Joining"   value="<?php echo set_value('doj');?>">
+                       <input type="text" name="doj" class="form-control" id="datepicker" placeholder="Date of Joining">
                      </div>
                       </div>
                     
@@ -439,19 +439,26 @@ $("#zzz").click(function(){
 
 
 
- <script>
-    $( function() {
-    $( "#datepicker" ).datepicker({
+  <script>
+     $( function() {
+     $( "#datepicker" ).datepicker({
+       changeMonth: true,
+       changeYear: true,
+        yearRange: '2002'
+
+     
+  });
+     $( "#datess" ).datepicker({
+     yearRange: '1980:2000',
       changeMonth: true,
-      changeYear: true
-    });
-     $( "#datepicker1" ).datepicker({
-      changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      
+       
+
     });
   } );
   </script>
-
+ 
 <!--  
 <script>
 function myFunction() {

@@ -9,7 +9,7 @@
          <?php endif; ?>
         
                <div style="padding-left:0px;" class="panel-heading">
-                  <a  class="btn btn-success"  href="<?php echo base_url();?>Vehicle/add_Vehicle_states">Add Vechicle Status</a>
+                  <a  class="btn btn-success"  href="<?php echo base_url();?>Vehicle/add_Vehicle_states">Add Vehicle Status</a>
  
               </div>
           <div class="box col-sm-3" >
@@ -21,10 +21,10 @@
  
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="vehiclestatus" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                   
+                                    <th> Sr #</th>
                                     <th> Name</th>
                                     <th> status</th>
                                     <th>Action</th>
@@ -36,8 +36,10 @@
                             <?php
                             if(!empty($vehiclestatus))
                             {
+                              $i=1;
                             foreach($vehiclestatus as $amb){ ?>
                                 <tr class="odd gradeX">
+                                <td><?php echo $i++;?></td>   
                                 <td><?php echo $amb["heading"];?></td>
                            
                                  <td>
@@ -99,6 +101,47 @@ else{
 
  
  
+ 
+ 
+ <script>
+         $(document).ready(function() {
+        $('#vehiclestatus').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                 columns: [ 0, 1]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                   columns: [ 0, 1]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
+
+
  
  
  

@@ -29,7 +29,33 @@ function GetAllTrips($type="") {
  //         $this->db->where('id',$id);
  //         $this->db->update('expense',$data);
  //    }
-    
+
+
+public function multipleproduct($id)
+
+{
+
+foreach ($id as $val) {
+
+  $r[]=$this->db->query("SELECT * FROM `tripproduct` INNER join product on product.id = tripproduct.product_id WHERE tripproduct.is_deleted = 0 AND tripproduct.trip_id = '$val'")->result_array();
+}
+
+return $r;
+
+}
+
+public function GetTripProductss($trips='')
+{
+    if($trips!=''){
+        foreach ($trips as $key => $value) {
+          // var_dump('<pre>',$value);die;
+            $trips[$key]['trip_products'] = $this->db->where('trip_id',$value['id'])->join('product','product.id=tripproduct.product_id')->get('tripproduct')->result_array();
+        }
+        return $trips;
+    }
+}
+
+
 
     public function insert($t="",$values=array())
         

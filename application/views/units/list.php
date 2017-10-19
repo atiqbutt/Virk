@@ -20,9 +20,10 @@
  
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="unit" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                    <th> Sr #</th>
                                     <th> Name</th>
                                     <th>Description</th>
                                     
@@ -35,8 +36,10 @@
                             <?php
                             if(!empty($unit))
                             {
+                              $i=1;
                             foreach($unit as $amb){ ?>
                                 <tr class="odd gradeX">
+                                  <td><?php echo $i++;?></td>
                                 <td><?php echo $amb["name"];?></td>
 
 
@@ -105,6 +108,47 @@ else{
     </section>
  
  
+ 
+ 
+ <script>
+         $(document).ready(function() {
+        $('#unit').DataTable({
+          dom: 'Bfrtip',
+       buttons: [
+            {
+                extend: 'copyHtml5',
+                exportOptions: {
+                    columns: [ 0, 1,2]
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                   columns: [ 0, 1,2]
+                }
+            },
+            {
+                extend: 'pdf',
+                exportOptions: {
+                columns: [ 0, 1,2]
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                 columns: [ 0, 1,2]
+                }
+            }
+            
+        ]
+        });
+          
+         });
+
+
+</script>
+
+
  
  
  

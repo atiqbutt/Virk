@@ -18,7 +18,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" action="<?php echo base_url()?>Vehicle/Vehicle_type_update" method="post" enctype="multipart/formdata">
+            <form class="form-horizontal" id="defaultForm" action="<?php echo base_url()?>Vehicle/Vehicle_type_update" method="post" enctype="multipart/formdata">
               <div class="box-body">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
@@ -43,3 +43,31 @@
     </div>
 </div>
 </section>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#defaultForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                   trigger:'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The name is required'
+                        }
+                    }
+                },
+             
+            }
+        });
+});
+
+
+</script>

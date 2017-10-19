@@ -6,10 +6,11 @@
     </style> 
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
-   
+   var wrappe=wrapper.length;
+   console.log(wrappe);
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
@@ -70,11 +71,25 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]"  value="<?php echo $edit->number?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
-                        
+                             <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+
+                        <input class="form-control" type="text" id="phone" name="phone[]"  maxlength="11" value="<?php echo $num2[0]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                         <br>
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()'/><button class="btn btn-default remove_fields"><span class=" fa fa-minus ko"></span></button>
+                        <?php
+                    }
+                        ?>
                         </div>
+
                            <div class="col-lg-2">
-                               <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
+                         <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
                       
    
                     </div>
@@ -93,14 +108,14 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Contact Person Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <input class="form-control" type="text" value="<?php echo $edit->cpnumber?>" placeholder="Contact Person Number" name="contactnumber" onkeypress='return ValidateNumberOnly()' />
+                         <input class="form-control" type="text" value="<?php echo $edit->cpnumber?>" maxlength="11" placeholder="Contact Person Number" name="contactnumber" onkeypress='return ValidateNumberOnly()' />
                          </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input class="form-control" type="text" value="<?php echo $edit->cnic?>" placeholder="Cnic" name="cnic" onkeypress='return ValidateNumberOnly()' />
+                               <input class="form-control" type="text" maxlength="13" value="<?php echo $edit->cnic?>" placeholder="Cnic" name="cnic" onkeypress='return ValidateNumberOnly()' />
                       </div>
                       </div>
                     
@@ -261,7 +276,7 @@ $(document).ready(function() {
                              message: 'The contact number is required'
                          },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
                             message: 'The phone number is not valid'
                         },
@@ -282,7 +297,7 @@ $(document).ready(function() {
                                 message: 'The Contact Number is required'
                                 },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
                             message: 'The phone number must be local or mobile'
                         },
@@ -405,15 +420,11 @@ $("#zzz").click(function(){
 });
 
 
+$('#remove_fields').click(function(){
+     $(this).parent().parent().remove();;
+})
 
 </script>
-
-
-
-
-
-
-
 <script>
 
 function ValidateNumberOnly()

@@ -1,25 +1,32 @@
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
-   
+ 
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
+        var size=$('input[id=phone]').length;
+        console.log(size);
+        if(size<2)
+        {
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-             $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" ></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
+            $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" class="input_fields_wrap"></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
             var field=$( "input[name='phone[]']" ).last();
             $('#defaultForm').bootstrapValidator('addField', field);
         }
+    }
     });
-    
-     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent().parent().parent().parent().remove(); x--;
+   
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent().parent().parent().parent().remove(); x--;
     })
 });
 </script>
+              
+
 
 <script>
 
@@ -68,21 +75,57 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       </div>
                     
                     
-                        <div class="item form-group">
+                          <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $edit->number?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                             <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+
+                        <input class="form-control" type="text" id="phone" name="phone[]"  maxlength="11" value="<?php echo $num2[0]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                         
                         </div>
+
                            <div class="col-lg-2">
-                               <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
+                         <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
                       
    
                     </div>
                       </div>
+
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                             <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()'/>
+                       
+                        
+                        </div>
+
+                           <div class="col-lg-2">
+                         <button type="button" class="btn btn-default add_field"><i class="fa fa-minus"></i></button>
+                       <?php
+                    }
+                        ?>
+                      </div>
+                      </div>
+
+
                     
                     <span class="input_fields_wrap"></span>
+
+                      
+                    
                     
                     
                      <input type="hidden" name="id" value="<?php echo $edit->id?>">
@@ -91,7 +134,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <input required type="cnic" name="cnic" class="form-control" onkeypress='return ValidateNumberOnly()' id="inputEmail3" value="<?php echo $edit->cnic?>">
+                         <input required type="cnic" name="cnic" class="form-control" maxlength="13" onkeypress='return ValidateNumberOnly()' id="inputEmail3" value="<?php echo $edit->cnic?>">
                  
                         </div>
                       </div>
@@ -373,9 +416,9 @@ $(document).ready(function() {
                                 message: 'The Contact Number is required'
                                 },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {
@@ -476,4 +519,7 @@ $("#zzz").click(function(){
    $('#defaultForm').bootstrapValidator("resetForm",true);    
 });
 
+$('.add_field').click(function(){
+     $(this).parent().parent().remove();;
+})
 </script>

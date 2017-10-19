@@ -47,11 +47,12 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       </div>
                     
                      
-                      <div class="ln_solid"></div>
+                     <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                       
-                         <button type="submit" name="register" class="btn btn-success">Submit</button>&nbsp&nbsp<button type="reset" class="btn btn-warning">Reset</button>&nbsp&nbsp<button type="submit" name="register"  onclick="window.location.href='<?php echo base_url()?>Vehicle/Vehicle_Status_list';" class="btn btn-danger">Cancel</button>
+                          <input class="btn btn-success" type="submit" name="register" value="Submit" />
+                          <input id="zzz" class="btn btn-warning" type="reset" name="reset" value="Reset" />
+                          <a type="submit" name="register" href='<?php echo base_url()?>Vehicle/Vehicle_Status_list' class="btn btn-danger">Cancel</a>
             
                         </div>
                       </div>

@@ -6,7 +6,7 @@
     </style> 
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -71,7 +71,7 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                            <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                         
                         </div>
                            <div class="col-lg-2">
@@ -97,14 +97,14 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Contact Person Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <input class="form-control" type="text" placeholder="Contact Person Number" name="contactnumber" onkeypress='return ValidateNumberOnly()' />
+                         <input class="form-control" type="text" placeholder="Contact Person Number" maxlength="11" name="contactnumber" onkeypress='return ValidateNumberOnly()' />
                          </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input class="form-control" type="text" placeholder="Enter Cnic Without dashes" name="cnic" onkeypress='return ValidateNumberOnly()' />
+                               <input class="form-control" type="text" maxlength="13" placeholder="Enter Cnic Without dashes" name="cnic" onkeypress='return ValidateNumberOnly()' />
                       </div>
                       </div>
                     
@@ -244,9 +244,9 @@ $(document).ready(function(){
                              message: 'The contact number is required'
                          },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The contact number must be local or mobile'
+                            message: 'The contact number must be mobile number'
                         },
                     remote: {
                         url: 'existcontactcompany',
@@ -270,9 +270,9 @@ $(document).ready(function(){
                 validators: {
                     
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {
