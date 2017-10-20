@@ -241,12 +241,12 @@ $(document).ready(function(){
                     trigger:'blur',
                 validators: {
                      notEmpty: {
-                             message: 'The contact number is required'
+                             message: 'The contact Person number is required'
                          },
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The contact number must be mobile number'
+                            message: 'The contact Person number must be mobile number'
                         },
                     remote: {
                         url: 'existcontactcompany',

@@ -297,12 +297,12 @@ contactnumber: {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The contact number is required'
+                                message: 'The contact Person number is required'
                             },
                             stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The phone number must be mobile number'
+                            message: 'The contact Person number must be mobile number'
                         },
                          //      regexp: {
                          //    regexp: /^[0-9]{10}$/,
@@ -320,7 +320,7 @@ contactnumber: {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The Contact Number is required'
+                                message: 'The phone number is required'
                                 },
                          stringLength: {
                             min: 11,

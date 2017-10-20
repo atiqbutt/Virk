@@ -241,12 +241,12 @@ $(document).ready(function(){
                     trigger:'blur',
                 validators: {
                      notEmpty: {
-                             message: 'The contact number is required'
+                             message: 'The contact Person number is required'
                          },
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The contact number must be mobile number'
+                            message: 'The contact Person number must be mobile number'
                         },
                     remote: {
                         url: 'existcontactcustomer',
@@ -258,7 +258,7 @@ $(document).ready(function(){
                                 contactnumber: contactnumber
                             };
                         },
-                        message: 'This contact number is already exist',
+                        message: 'This contact Person number is already exist',
                         type: 'POST'
                     }
                 }
@@ -411,7 +411,7 @@ $(document).ready(function(){
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person Name is required'
                             }
                         }
                     },

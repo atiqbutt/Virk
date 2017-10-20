@@ -384,7 +384,7 @@ $(document).ready(function() {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person Name is required'
                             }
                         }
                     },
@@ -426,12 +426,12 @@ $(document).ready(function() {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The Contact Number is required'
+                                message: 'The phone number is required'
                                 },
                          stringLength: {
                             min: 10,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {

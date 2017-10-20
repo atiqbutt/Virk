@@ -289,7 +289,7 @@ $(document).ready(function() {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person  Name is required'
                             }
                         }
                     },
@@ -299,12 +299,12 @@ $(document).ready(function() {
                     trigger:'keyup blur',
                 validators: {
                      notEmpty: {
-                             message: 'The contact number is required'
+                             message: 'The contact Person number is required'
                          },
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The phone number is not valid'
+                            message: 'The contact Person number is not valid'
                         },
                     
                 }
@@ -320,7 +320,7 @@ $(document).ready(function() {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The Contact Number is required'
+                                message: 'The phone number is required'
                                 },
                          stringLength: {
                             min: 11,
@@ -350,7 +350,7 @@ $(document).ready(function() {
                             if (duplicateRemoved.length !== notEmptyCount) {
                                 return {
                                     valid: false,
-                                    message: 'The phone no must be unique, cannot duplicate'
+                                    message: 'The phone number must be unique, cannot duplicate'
                                 };
                             }
 
@@ -409,7 +409,7 @@ $(document).ready(function() {
                     trigger:'keyup blur',
                 validators: {
                      notEmpty: {
-                             message: 'The cnicis required'
+                             message: 'The cnic is required'
                          },
                          stringLength: {
                             min: 13,

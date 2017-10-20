@@ -274,9 +274,9 @@ $(document).ready(function() {
                 validators: {
                      
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {
@@ -306,7 +306,7 @@ $(document).ready(function() {
                             } else if (duplicateRemoved.length !== notEmptyCount) {
                                 return {
                                     valid: false,
-                                    message: 'The phone no must be unique, cannot duplicate'
+                                    message: 'The phone number must be unique, cannot duplicate'
                                 };
                             }
 
@@ -334,7 +334,7 @@ $(document).ready(function() {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person  Name is required'
                             }
                         }
                     },
@@ -343,7 +343,7 @@ contactnumber: {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The contact number is required'
+                                message: 'The contact Person number is required'
                             },
                          //      regexp: {
                          //    regexp: /^[0-9]{10}$/,
@@ -365,12 +365,12 @@ contactnumber: {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The Contact Number is required'
+                                message: 'The Contact Person  Number is required'
                                 },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {
@@ -457,7 +457,7 @@ contactnumber: {
                     trigger:'keyup blur',
                 validators: {
                      notEmpty: {
-                             message: 'The cnicis required'
+                             message: 'The cnic is required'
                          },
                          stringLength: {
                             min: 13,

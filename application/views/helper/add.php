@@ -246,7 +246,7 @@ $(document).ready(function(){
                          stringLength: {
                             min: 10,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     remote: {
                         url: 'existphonehelper',
@@ -270,7 +270,7 @@ $(document).ready(function(){
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The contact number is required'
+                                message: 'The contact person number is required'
                             },
                          //      regexp: {
                          //    regexp: /^[0-9]{10}$/,
@@ -418,7 +418,7 @@ $(document).ready(function(){
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person Name is required'
                             }
                         }
                     },

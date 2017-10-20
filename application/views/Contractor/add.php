@@ -222,12 +222,12 @@ $(document).ready(function(){
                     trigger:'keyup blur',
                 validators: {
                      notEmpty: {
-                             message: 'The contact number is required'
+                             message: 'The contact Person number is required'
                          },
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The phone number is not valid'
+                            message: 'The contact Person number is not valid'
                         },
                     
                 }
@@ -311,7 +311,7 @@ $(document).ready(function(){
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'Phone number is not valid'
+                            message: 'The Phone number is not valid'
                         },
                     callback: {
                         callback: function(value, validator, $field) {
@@ -379,7 +379,7 @@ $(document).ready(function(){
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person  Name is required'
                             }
                         }
                     },

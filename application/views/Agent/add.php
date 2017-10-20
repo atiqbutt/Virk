@@ -282,7 +282,7 @@ $(document).ready(function(){
                             } else if (duplicateRemoved.length !== notEmptyCount) {
                                 return {
                                     valid: false,
-                                    message: 'The phone no must be unique, cannot duplicate'
+                                    message: 'The phone number must be unique, cannot duplicate'
                                 };
                             }
 
@@ -312,12 +312,12 @@ $(document).ready(function(){
                     trigger:'blur',
                 validators: {
                      notEmpty: {
-                             message: 'The contact number is required'
+                             message: 'The contact Person number is required'
                          },
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The contact number must be mobile number'
+                            message: 'The contact Person number must be mobile number'
                         },
                    
                 }
@@ -411,7 +411,7 @@ $(document).ready(function(){
                          trigger:'blur',
                         validators: {
                             notEmpty: {
-                                message: 'The Contact Name is required'
+                                message: 'The Contact Person  Name is required'
                             }
                         }
                     },
