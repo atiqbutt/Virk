@@ -304,7 +304,7 @@ $(document).ready(function() {
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The contact Person number is not valid'
+                            message: 'The contact Person number must be mobile number'
                         },
                     
                 }
@@ -325,7 +325,7 @@ $(document).ready(function() {
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {

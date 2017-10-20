@@ -207,12 +207,12 @@ $(document).ready(function(){
                     trigger:'keyup blur',
                 validators: {
                      notEmpty: {
-                             message: 'The phone number is not valid'
+                             message: 'The Phone number is not valid'
                          },
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The phone number is not valid'
+                            message: 'The Phone number must be mobile number'
                         },
                     
                 }
@@ -227,7 +227,7 @@ $(document).ready(function(){
                          stringLength: {
                             min: 11,
                             max: 11,
-                            message: 'The contact Person number is not valid'
+                            message: 'The Contact Person number must be mobile number'
                         },
                     
                 }

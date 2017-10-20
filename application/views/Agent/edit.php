@@ -365,7 +365,7 @@ contactnumber: {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The Contact Person  Number is required'
+                                message: 'The phone number  Number is required'
                                 },
                          stringLength: {
                             min: 11,
@@ -395,7 +395,7 @@ contactnumber: {
                             if (duplicateRemoved.length !== notEmptyCount) {
                                 return {
                                     valid: false,
-                                    message: 'The phone no must be unique, cannot duplicate'
+                                    message: 'The phone number must be unique, cannot duplicate'
                                 };
                             }
 

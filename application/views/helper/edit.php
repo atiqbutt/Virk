@@ -420,7 +420,7 @@ $(document).ready(function() {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The phone Number is required'
+                                message: 'The phone number is required'
                                 },
                          stringLength: {
                             min: 11,

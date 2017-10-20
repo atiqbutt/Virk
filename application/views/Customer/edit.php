@@ -320,7 +320,7 @@ contactnumber: {
                 validators: {
                      
                      notEmpty: {
-                                message: 'The Contact Number is required'
+                                message: 'The phone number is required'
                                 },
                          stringLength: {
                             min: 11,
