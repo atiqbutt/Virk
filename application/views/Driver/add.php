@@ -114,21 +114,21 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Religion <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                           <input type="cnic" name="religion" class="form-control" onkeypress="return maskAlphaWithSp(this,event);" id="inputEmail3" placeholder="Religion" value="<?php echo set_value('religion');?>">
+                           <input type="cnic" name="religion" class="form-control" onkeypress="return maskAlphaWithSp(this,event);" id="inputEmail3" placeholder="Religion">
                      </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Address <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                             <input type="address" name="address" class="form-control" onkeyup="alpha(this)" id="inputEmail3" placeholder="Address" value="<?php echo set_value('address');?>">
+                             <input type="address" name="address" class="form-control" onkeyup="alpha(this)" id="inputEmail3" placeholder="Address" >
                   </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" name="dob" class="form-control" id="datess" placeholder="Date of Birth"   value="<?php echo set_value('dob');?>">
+                    <input type="date" name="dob" class="form-control" id="datess" placeholder="Date of Birth" format="yyyy-mm-dd" min="1980-01-01" max="2000-12-31">
                         </div>
                       </div>
                     
@@ -137,7 +137,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Joining <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input type="text" name="doj" class="form-control" id="datepicker" placeholder="Date of Joining"   value="<?php echo set_value('doj');?>">
+                       <input type="date" name="doj" class="form-control" id="datepicker" max="2005-01-01" placeholder="Date of Joining">
                      </div>
                       </div>
                     
@@ -147,7 +147,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Driver License <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="cnic" name="driver" class="form-control" id="inputEmail3" placeholder="Driver License" value="<?php echo set_value('driver');?>">
+                          <input type="cnic" name="driver" class="form-control" id="inputEmail3" placeholder="Driver License">
                        </div>
                       </div>
                     
@@ -478,7 +478,7 @@ $("#zzz").click(function(){
 
 
 
-
+<!-- 
   <script>
      $( function() {
      $( "#datepicker" ).datepicker({
@@ -499,6 +499,8 @@ $("#zzz").click(function(){
   } );
   </script>
 
+
+ -->
 <!--  
 <script>
 function myFunction() {
