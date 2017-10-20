@@ -16,17 +16,14 @@
                       <div class="form-group">
                       <label class="control-label col-sm-4">Vehicle Type <span class="required">*</span></label>
                       <div class="col-sm-7">
-                        <select class="form-control sel" name="vehicle_type">                  
-                            
+                        <select class="form-control sel" name="vehicle_type"> 
                              <?php
-                           
                             foreach ($data as $value) {
                               ?>
                               <option <?php if($edit->vehtypeid==$value->id) echo "selected='selected'"; ?>value="<?php echo $value->id?>"><?php echo $value->heading;?></option>
                               <?php
                             }
                             ?>
-
                         </select>
                        </div>
                       </div>
@@ -58,17 +55,8 @@
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="text" value="<?php echo $edit->company?>" name="company" onkeypress="return maskAlphaWithSp(this,event);" name="company" placeholder="Company...."  required="required" /></div></div>
                                 
-                          <div class="form-group"> 
-                        <label class="control-label col-sm-4">Token Expiry <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control" type="date" name="token" /></div></div>
-                                
+                     
 
-                        <div class="form-group"> 
-                        <label class="control-label col-sm-4">Calibration <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="text"  onkeypress="return maskAlphaWithSp(this,event);" name="calibration" placeholder="Calibration...."  required="required" /></div></div>
-                                
 
                       </div>
 
@@ -91,43 +79,26 @@
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="text" value="<?php echo $edit->model?>" name="model"  placeholder="Model...."  /> </div> </div>
                       
-                      <div class="form-group">    
-                        <label class="control-label col-sm-4">Fitness Certificate <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="date" name="fitness"  /> </div> </div>
+                    
 
 
-                          <div class="form-group"> 
-                        <label class="control-label col-sm-4">Route Permit<span>*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="date"   name="route" placeholder="Company...."  /></div></div>
-                                
-
-
-                           <div class="form-group">    
-                        <label class="control-label col-sm-4">License <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="date"  name="License" /> </div> </div>
-
-                        
+                       
 
                          
                        <div class="form-group"> 
                         <label class="control-label col-sm-4">Vehicle Image<span class="required">*</span></label>
                         <div class="col-sm-7"> 
-                       
-         
-                     <input type="file" name="vehicleimage" class="form-control">
-                      </div></div>
+                        <input type="file" name="vehicleimage" class="form-control" >
+                        </div></div>
+
+
+
  
                          <div class="form-group">
                         <label class="control-label col-sm-4">Scan Document <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
-
-
-
-                    </div>
+                         </div>
 
                    
                    
@@ -139,7 +110,7 @@
                      
                            <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3"> 
-                               <input class="btn btn-success" type="submit" name="register" value="Submit" />
+                               <input class="btn btn-success" type="submit" name="register" value="Update" />
                                <input id="resetbtn" class="btn btn-warning" type="reset" name="reset" value="Reset" />
                                <a class="btn btn-danger" href="<?php echo base_url() ?>Vehicle/show_vehicle">Cancel</a>
                            </div>
@@ -149,8 +120,11 @@
                
             </div>
         </div>
-
       </div></div>
+
+
+
+
 
             <div class="col-md-4">
                 <div class="box">
@@ -159,23 +133,39 @@
                     </div>
                     <div class="box-body">
                     <div class="row">
-                      <div class="col-md-12">
-                      <div class="form-group"> 
-                        <div class="col-md-4 text-right"><label class="control-label">Chamber 1 <span class="required">*</span></label>
-                        </div>
-                         <div class="col-md-8"><input value="Chamber" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>
-                         </div>
-                     </div>
+                  <?php 
+                  $i=1;
+                  foreach ($chamber as $val) {
+                  ?>
+                  <?php
+                  if($val->vehicle_id==$edit->id)
+                  {
+                  ?>
+
+              <div class="col-md-12">
+              <div class="form-group"> 
+              <div class="col-md-4 text-right"><label class="control-label">Chamber<?php echo $i;?><span class="required">*</span></label>
+              </div>
+              <div class="col-md-8"><input value="Chamber" value="<?php echo $edit->numcham?>" text-align:center; readonly class="form-control" type="text" name="numberofchamber[]" required="required"/>
+              </div>
+              </div>
 
                      <div class="form-group"> 
-                        <div class="col-md-4 text-right"><label class="control-label">capacity 1 <span class="required">*</span></label>
+                        <div class="col-md-4 text-right"><label class="control-label">capacity <?php echo $i;?><span class="required">*</span></label>
                         </div>
-                         <div class="col-md-8"><input class="form-control fc"  id="fc"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
+                         <div class="col-md-8"><input class="form-control fc"  value="<?php echo $edit->cham?>" id="fc"  type="text" name="capacityofchamber[]" onkeypress="return ValidateNumberOnly()"
                                required="required"/>
                          </div>
                      </div>
-                  </div>
+          <?php
+          }
+          $i++;
+          }
+          ?>
                       </div>
+                    
+  
+                    
                     
                   
 

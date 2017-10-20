@@ -53,17 +53,9 @@
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="text" onkeypress="return maskAlphaWithSp(this,event);" name="company" placeholder="Company...."  required="required" /></div></div>
                                 
-                          <div class="form-group"> 
-                        <label class="control-label col-sm-4">Token Expiry <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control" type="date" name="token" /></div></div>
-                                
+                         
 
-                        <div class="form-group"> 
-                        <label class="control-label col-sm-4">Calibration <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="text" onkeypress="return maskAlphaWithSp(this,event);" name="calibration" placeholder="Calibration...."  required="required" /></div></div>
-                                
+                      
 
                                   
 
@@ -88,42 +80,18 @@
                         <div class="col-sm-7"> 
                         <input class="form-control"  type="text" name="model"  placeholder="Model...."  /> </div> </div>
                       
-                      <div class="form-group">    
-                        <label class="control-label col-sm-4">Fitness Certificate <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="date" name="fitness"  /> </div> </div>
-
-
-                          <div class="form-group"> 
-                        <label class="control-label col-sm-4">Route Permit<span>*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="date"  name="route" placeholder="Company...."  /></div></div>
-                                
-
-
-                           <div class="form-group">    
-                        <label class="control-label col-sm-4">License <span class="required">*</span></label>
-                        <div class="col-sm-7"> 
-                        <input class="form-control"  type="date" name="License" /> </div> </div>
-
-                        
 
                          
                        <div class="form-group"> 
                         <label class="control-label col-sm-4">Vehicle Image<span class="required">*</span></label>
                         <div class="col-sm-7"> 
-                       
-         
-                     <input type="file" name="vehicleimage" class="form-control">
-                      </div></div>
+                        <input type="file" name="vehicleimage" class="form-control">
+                        </div></div>
  
                          <div class="form-group">
                         <label class="control-label col-sm-4">Scan Document <span class="required">*</span></label>
                         <div class="col-sm-7"> 
                         <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
-
-
-
                     </div>
 
                    

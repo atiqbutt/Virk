@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -59,7 +59,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                      <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/savedriver" method="post" enctype="multipart/form-data"> 
                       
                     <div class=" form-group">    
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Type</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Type <span class="required">*</span></label>
                          <div class="col-md-6 col-sm-6 col-xs-12">
                             <select id="vehicle" class="form-control" name="type" required>
                                <option value="">Select Options</option>       
@@ -86,7 +86,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input class="form-control" type="text" id="phone" name="phone[]" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                            <input class="form-control" type="text" id="phone" maxlength="11" name="phone[]" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
                         
                         </div>
                            <div class="col-lg-2">
@@ -104,7 +104,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="cnic" name="cnic" class="form-control" id="inputEmail3"  onkeypress='return ValidateNumberOnly()' placeholder="Enter Cnic Without dashes" value="<?php echo set_value('cnic');?>">
+                              <input type="cnic" name="cnic" class="form-control" id="inputEmail3"  maxlength="13" onkeypress='return ValidateNumberOnly()' placeholder="Enter Cnic Without dashes" value="<?php echo set_value('cnic');?>">
                      </div>
                       </div>
                     
@@ -128,7 +128,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="cnic" name="dob" class="form-control" id="datepicker1" placeholder="Date of Birth"   value="<?php echo set_value('dob');?>">
+                    <input type="text" name="dob" class="form-control" id="datess" placeholder="Date of Birth"   value="<?php echo set_value('dob');?>">
                         </div>
                       </div>
                     
@@ -137,7 +137,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Joining <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input type="cnic" name="doj" class="form-control" id="datepicker" placeholder="Date of Joining"   value="<?php echo set_value('doj');?>">
+                       <input type="text" name="doj" class="form-control" id="datepicker" placeholder="Date of Joining"   value="<?php echo set_value('doj');?>">
                      </div>
                       </div>
                     
@@ -247,6 +247,15 @@ $(document).ready(function(){
                             }
                         }
                     },
+                    type: {
+                        trigger:'blur',
+                        validators: {
+                            notEmpty: {
+                                message: 'The type is required'
+                            }
+                        }
+                    },
+
                     phone: {
                         message: 'The phone number is not valid',
                          trigger:'blur',
@@ -470,15 +479,22 @@ $("#zzz").click(function(){
 
 
 
- <script>
-    $( function() {
-    $( "#datepicker" ).datepicker({
+  <script>
+     $( function() {
+     $( "#datepicker" ).datepicker({
+       changeMonth: true,
+       changeYear: true,
+        yearRange: '2002'
+
+     
+  });
+     $( "#datess" ).datepicker({
+     yearRange: '1980:2000',
       changeMonth: true,
-      changeYear: true
-    });
-     $( "#datepicker1" ).datepicker({
-      changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      
+       
+
     });
   } );
   </script>

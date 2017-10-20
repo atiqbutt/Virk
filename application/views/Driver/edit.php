@@ -1,23 +1,27 @@
-<script>
+ <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
-   
+ 
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
+        var size=$('input[id=phone]').length;
+        console.log(size);
+        if(size<2)
+        {
         if(x < max_fields){ //max input box allowed
-          
-             x++; //text box increment8
-             $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" ></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
+            x++; //text box increment
+            $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" class="input_fields_wrap"></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
             var field=$( "input[name='phone[]']" ).last();
             $('#defaultForm').bootstrapValidator('addField', field);
         }
+    }
     });
-    
-     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        e.preventDefault(); $(this).parent().parent().parent().parent().remove(); x--;
+   
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent().parent().parent().parent().remove(); x--;
     })
 });
 </script>
@@ -61,7 +65,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                   <form class="form-horizontal" id="defaultForm" action="<?php echo base_url()?>Defination/updatedriver" method="post" enctype="multipart/form-data">
          
                <div class=" form-group">    
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" >Type</label>
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" >Type <span class="required">*</span></label>
                    <div class="col-md-6 col-sm-6 col-xs-12">
                       <select id="vehicle" class="form-control" name="type" required>
                          <option value="">Select Options</option>       
@@ -87,34 +91,56 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                       </div>
                     
                     
-                       <div class="item form-group">
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <?php
+                             <?php
                         $num2=explode(',', $edit->number);
                        
                         ?>
 
-                            <input class="form-control" type="text" id="phone" name="phone[]" value="<?php echo $num2[0]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
-                        <br>
-                         <?php
-                         if(!empty($num2[1]))
-                            {
-                            ?>
-                          <input class="form-control" type="text" id="phone" name="phone[]"  value="<?php echo $num2[1]?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
-                        <?php
-                    }
-                        ?>
+                        <input class="form-control" type="text" id="phone" name="phone[]"  maxlength="11" value="<?php echo $num2[0]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
+                        
                         </div>
+
                            <div class="col-lg-2">
-                               <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
+                         <button type="button" class="btn btn-default add_field_button"><i class="fa fa-plus"></i></button>
                       
    
                     </div>
                       </div>
+
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                             <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()'/>
+                       
+                        
+                        </div>
+
+                           <div class="col-lg-2">
+                         <button type="button" class="btn btn-default add_field"><i class="fa fa-minus"></i></button>
+                       <?php
+                    }
+                        ?>
+                      </div>
+                      </div>
+
+
                     
                     <span class="input_fields_wrap"></span>
+
+                      
                     
                     
                      <input type="hidden" name="id" value="<?php echo $edit->id?>">
@@ -123,7 +149,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cnic <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="cnic" name="cnic" required class="form-control" onkeypress='return ValidateNumberOnly()' id="inputEmail3" value="<?php echo $edit->cnic?>">
+                              <input type="cnic" name="cnic" required class="form-control" maxlength="13" onkeypress='return ValidateNumberOnly()' id="inputEmail3" value="<?php echo $edit->cnic?>">
                
                         </div>
                       </div>
@@ -149,7 +175,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input type="cnic" name="dob" class="form-control" id="datepicker1" placeholder="Date of Birth" value="<?php echo $edit->dob?>">
+                               <input type="cnic" name="dob" class="form-control" id="datess" placeholder="Date of Birth" value="<?php echo $edit->dob?>">
             
                         </div>
                       </div>
@@ -232,15 +258,26 @@ if ((event.keyCode < 48 || event.keyCode > 57))
 
  <script>
     $( function() {
-    $( "#datepicker" ).datepicker({
+     $( "#datepicker" ).datepicker({
+       changeMonth: true,
+       changeYear: true,
+        yearRange: '2002'
+
+     
+  });
+     $( "#datess" ).datepicker({
+     yearRange: '1980:2000',
       changeMonth: true,
-      changeYear: true
-    });
-     $( "#datepicker1" ).datepicker({
-      changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      
+       
+
     });
   } );
+  
+$('.add_field').click(function(){
+     $(this).parent().parent().remove();;
+})
   </script>
 
 
@@ -301,6 +338,14 @@ $(document).ready(function() {
                     }
                 }
             },
+            type: {
+                        trigger:'blur',
+                        validators: {
+                            notEmpty: {
+                                message: 'The type is required'
+                            }
+                        }
+                    },
             address: {
                          trigger:'blur',
                         validators: {

@@ -179,6 +179,7 @@ $this->vehicle_model->save('vehicle_document', $op);
       
         public function edit_vehicle_show($id)
     	{
+            
     		$data['base_url'] = base_url();
             $data['userInfo'] = $this->userInfo; 
             $data['menu'] = $this->load_model->menu();

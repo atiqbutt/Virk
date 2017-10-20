@@ -4,22 +4,27 @@
         color:black;
     }
     </style> 
+
 <script>
 $(document).ready(function() {
     var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
-   var wrappe=wrapper.length;
-   console.log(wrappe);
+ 
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
+        var size=$('input[id=phone]').length;
+        console.log(size);
+        if(size<2)
+        {
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" ></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
+            $(wrapper).append('<div class="item form-group"><label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class=""></span></label><div class="col-md-6"><div class="row"><div class="col-md-10"><input class="form-control" type="text" placeholder="Phone" onkeypress="return ValidateNumberOnly()" name="phone[]" class="input_fields_wrap"></div><div class="col-md-2"><button class="btn btn-default remove_field"><span class=" fa fa-minus ko"></span></button></div></div></div></div>'); //add input box
             var field=$( "input[name='phone[]']" ).last();
             $('#defaultForm').bootstrapValidator('addField', field);
         }
+    }
     });
    
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
@@ -27,7 +32,6 @@ $(document).ready(function() {
     })
 });
 </script>
-              
 
 
 
@@ -62,7 +66,7 @@ $(document).ready(function() {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Address <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input class="form-control" type="text" value="<?php echo $edit->address?>" placeholder="Address" name="address" />
+                            <input class="form-control" type="text" value="<?php echo $edit->address?>" placeholder="Address" name="address" />
                    </div>
                       </div>
                     
@@ -77,15 +81,7 @@ $(document).ready(function() {
                         ?>
 
                         <input class="form-control" type="text" id="phone" name="phone[]"  maxlength="11" value="<?php echo $num2[0]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()' />
-                         <br>
-                         <?php
-                         if(!empty($num2[1]))
-                            {
-                            ?>
-                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()'/><button class="btn btn-default remove_fields"><span class=" fa fa-minus ko"></span></button>
-                        <?php
-                    }
-                        ?>
+                        
                         </div>
 
                            <div class="col-lg-2">
@@ -94,8 +90,38 @@ $(document).ready(function() {
    
                     </div>
                       </div>
+
+                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                             <?php
+                        $num2=explode(',', $edit->number);
+                       
+                        ?>
+                         <?php
+                         if(!empty($num2[1]))
+                            {
+                            ?>
+                          <input class="form-control" type="text" id="phone" name="phone[]" maxlength="11" value="<?php echo $num2[1]  ?>" placeholder="Phone" onkeypress='return ValidateNumberOnly()'/>
+                       
+                        
+                        </div>
+
+                           <div class="col-lg-2">
+                         <button type="button" class="btn btn-default add_field"><i class="fa fa-minus"></i></button>
+                       <?php
+                    }
+                        ?>
+                      </div>
+                      </div>
+
+
                     
                     <span class="input_fields_wrap"></span>
+
+
+                        
                       
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Contact Person Name <span class="required">*</span>
@@ -419,8 +445,7 @@ $("#zzz").click(function(){
    $('#defaultForm').bootstrapValidator("resetForm",true);    
 });
 
-
-$('#remove_fields').click(function(){
+$('.add_field').click(function(){
      $(this).parent().parent().remove();;
 })
 

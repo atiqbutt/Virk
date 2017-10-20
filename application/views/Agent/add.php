@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+    var max_fields      = 2; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
    
@@ -250,9 +250,9 @@ $(document).ready(function(){
                              message: 'The phone number is required'
                          },*/
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The phone number must be local or mobile'
+                            message: 'The phone number must be mobile number'
                         },
                     callback: {
                         callback: function(value, validator, $field) {
@@ -315,9 +315,9 @@ $(document).ready(function(){
                              message: 'The contact number is required'
                          },
                          stringLength: {
-                            min: 10,
+                            min: 11,
                             max: 11,
-                            message: 'The contact number must be local or mobile'
+                            message: 'The contact number must be mobile number'
                         },
                    
                 }
