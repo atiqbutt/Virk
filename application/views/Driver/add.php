@@ -151,8 +151,6 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                        </div>
                       </div>
                     
-                     
-                         
                           <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Scan Document<span class="required"></span>
                         </label>
@@ -160,10 +158,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                           <input type="file"  id="inputEmail3" name="doc" class="form-control">
                      </div>
                       </div>
-                         
-                      
-                     
-                      <div class="ln_solid"></div>
+                     <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <input class="btn btn-success" type="submit" name="register" value="Submit" />
@@ -463,26 +458,6 @@ $(document).ready(function(){
                 }
             },
 
-
-
-                //     email: {
-                //          trigger:'blur',
-                //     validators: {
-                //         notEmpty: {
-                //             message: 'The email is required'
-                //         },
-                //          regexp: {
-                //             regexp: /\S+@\S+\.\S+/,
-                //              message: 'The input is not a valid email address'
-                //          },
-                        
-                //     }
-                // },
-
-
-              
-        
-
                     address: {
                          trigger:'blur',
                         validators: {
@@ -515,10 +490,7 @@ $(document).ready(function(){
                     }
                 }
             },
-                   
-                    
-                    
-                    religion: {
+              religion: {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
@@ -552,72 +524,11 @@ $(document).ready(function(){
                             }
                         }
                     },
-
-
                    
                 }
             });
     });
-    
-    
-       
-     
 $("#zzz").click(function(){
    $('#shippingForm').bootstrapValidator("resetForm",true);    
 });
-</script>
-
-
-
-
-<!-- 
-  <script>
-     $( function() {
-     $( "#datepicker" ).datepicker({
-       changeMonth: true,
-       changeYear: true,
-        yearRange: '2002'
-
-     
-  });
-     $( "#datess" ).datepicker({
-     yearRange: '1980:2000',
-      changeMonth: true,
-      changeYear: true,
-      
-       
-
-    });
-  } );
-  </script>
-
-
- -->
-<!--  
-<script>
-function myFunction() {
-    
-        if(!(isDateSmaller($('#datepicker1').val(),$('#datepicker').val()))){
-           
-            alert("Fill valid Form");
-            return false;
-        }
-}
-</script>-->
-
-
-
- <script type="text/javascript">
-function getJsDate( date )
-{
-  var jsDate = new Date();
-  jsDate.setFullYear( date.split('-')[0] );
-  jsDate.setMonth( (date.split('-')[1])-1 );
-  jsDate.setDate( date.split('-')[2]);
-  jsDate.setHours( 0 );
-  jsDate.setMinutes( 0 );
-  jsDate.setSeconds( 0 );
-  jsDate.setMilliseconds( 0 );
-  return jsDate;
-}
 </script>
