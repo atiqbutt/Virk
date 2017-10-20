@@ -158,7 +158,8 @@ $this->vehicle_model->save('vehicle_document', $op);
     $mod= $this->input->post('model');
     $url=$this->do_upload();
     $url2=$this->do_upload2();
-   
+    
+                  
      $admin=json_decode(base64_decode($this->session->admin),true);
      $id=$admin['id'];
                     $field=array(
@@ -169,7 +170,7 @@ $this->vehicle_model->save('vehicle_document', $op);
                     'company'=>$comp,
                     'numberofchamber1'=>$cham,
                     'totalfuelcapacity'=>$totfuel,
-                    'vehicleimage'=>$url,
+                   
                     'createdAt'=>date("Y-m-d h:i:sa"),
                     'createdBy'=>$id,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
@@ -177,49 +178,13 @@ $this->vehicle_model->save('vehicle_document', $op);
                     'color'=>$color,
                     'model'=>$mod
                       );
-        $vehicle_id=$this->db->where('id',$data['vehicleid'])->update('vehicle',$field);     
-         
-           $op=array();
-            foreach ($url2 as $key => $value) {
-           $op=array(
-            'vechile_id'=>$vehicle_id,
-            'path'=>$value
-            );
-    $this->db->where('id',$data['id'])->update('vehicle_document',$op);     
+
+        $vehicle_id=$this->db->where('id',$data['vehicleid'])->update('vehicle',$field);  
+         $this->session->set_flashdata('msg', "Record has been Updated Successfully");   
+        redirect('Vehicle/show_vehicle');
+
+}
     }
-
-   //$this->vehicle_model->save_batch('vechile_document', $op); 
-
-            $cap= $this->input->post('capacityofchamber');
-            $chamb= $this->input->post('numberofchamber');
-
-           for ($i = 0; $i<count($chamb); $i++) {
-                $data1 = array(
-                    'vehicle_id'=>$vehicle_id,
-                    'numberofchamber'=>$chamb[$i],
-                    'capacityofchamber'=>$cap[$i],
-                    'createdAt'=>date("Y-m-d h:i:sa"),
-                    'createdBy'=>$id,
-                    'modifiedAt'=>date("Y-m-d h:i:sa"),
-                    'modifiedBy'=>$id,
-                ); 
-                $this->vehicle_model->save("chambers", $data1); 
-
-              } 
-                $this->session->set_flashdata('msg', "Record has been Added Successfully
-");
-            redirect('Vehicle/show_vehicle');
-
-            }else{
-
-                $this->session->set_flashdata('error', "Record has been not Added Successfully
-");
-                redirect('Vehicle/show_vehicle');
-
-            }
-
-    
-        }
 
 
 
