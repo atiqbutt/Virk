@@ -56,7 +56,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
             <!-- /.box-header -->
             <div class="box-body">
               <div class="col-md-9">
-                     <form class="form-horizontal" id="shippingForm" action="<?php echo base_url()?>Defination/savedriver" method="post" enctype="multipart/form-data"> 
+                     <form class="form-horizontal" id="shippingForm" onsubmit="return validateForm(this)"  action="<?php echo base_url()?>Defination/savedriver" method="post" enctype="multipart/form-data"> 
                       
                     <div class=" form-group">    
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Type <span class="required">*</span></label>
@@ -128,7 +128,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="date" name="dob" class="form-control" id="datess" placeholder="Date of Birth" min="1980-01-01" max="2000-12-31">
+                    <input type="date" name="dob" class="form-control" id="datess" placeholder="Date of Birth" >
                         </div>
                       </div>
                     
@@ -137,7 +137,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Joining <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input type="date" name="doj" class="form-control" id="datepicker" min="2005-01-01" max="2017-12-31" placeholder="Date of Joining">
+                       <input type="date" name="doj" class="form-control" id="datepicker"  placeholder="Date of Joining">
                      </div>
                       </div>
                     
@@ -192,6 +192,98 @@ if ((event.keyCode < 48 || event.keyCode > 57))
  
  
  <script type="text/javascript">
+
+function validateForm(form) {
+
+  var isValid=false;
+    var _fDate =undefined;
+  var _tDate = undefined;
+
+  if(form.dob!=undefined)
+  {
+    _fDate = form.dob.value;
+  }
+  if(form.doj!=undefined)
+  {
+    _tDate = form.doj.value;
+  }
+  var startlbl = "Date of Birth";
+  var endlbl = "Date of Joining";
+if(!isValid){
+  isValid=  isValidDateRange(_fDate,_tDate,startlbl,endlbl,new Date());
+    }
+  if(!isValid){
+    return false;
+  }
+}
+
+function isValidDateRange(_fDate,_tDate,startlbl,endlbl,serverDate)
+{   
+    
+  if((_fDate==undefined || _fDate=="" || _fDate==null) && ( _tDate==undefined  || _tDate=="" || _tDate==null))
+    return false;
+    var isValid = true;
+    serverDate=  serverDate ;
+    if(_fDate!=undefined && _fDate!="")
+    {
+      var fDate = getJsDate( _fDate );        
+      if(fDate > serverDate){
+        alert(startlbl+" can't be in future.");
+        isValid = false;    
+      } 
+    }
+    
+    if(_tDate!=undefined && _tDate!="")
+    {
+      var tDate = getJsDate( _tDate );
+      
+      if(tDate > serverDate){
+        alert(endlbl+" can't be in future.");
+        isValid = false;    
+      }
+    }
+    
+    if(_fDate!=undefined && _fDate!="" && _tDate!=undefined  && _tDate!="" )
+    {
+      var fDate =  getJsDate(_fDate) ;
+      var tDate =  getJsDate(_tDate) ;
+      
+      if(!(getJsDate18(_tDate)>fDate)) {
+        alert(startlbl+" should be 18 years less then  "+endlbl);
+          isValid = false;
+      }   
+    }
+    
+  return isValid;
+}
+
+function getJsDate18( date )
+{
+  var jsDate = new Date();
+  jsDate.setFullYear( (date.split('-')[0])-18 );
+  jsDate.setMonth( (date.split('-')[1])-1 );
+  jsDate.setDate( date.split('-')[2]);
+  jsDate.setHours( 0 );
+  jsDate.setMinutes( 0 );
+  jsDate.setSeconds( 0 );
+  jsDate.setMilliseconds( 0 );
+  return jsDate;
+}
+
+
+function getJsDate( date )
+{
+  var jsDate = new Date();
+  jsDate.setFullYear( date.split('-')[0] );
+  jsDate.setMonth( (date.split('-')[1])-1 );
+  jsDate.setDate( date.split('-')[2]);
+  jsDate.setHours( 0 );
+  jsDate.setMinutes( 0 );
+  jsDate.setSeconds( 0 );
+  jsDate.setMilliseconds( 0 );
+  return jsDate;
+}
+
 
 $(document).ready(function(){
     $('#picture').on('change', function(){ //on file input change
