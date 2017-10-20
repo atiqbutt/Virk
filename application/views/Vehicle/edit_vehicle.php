@@ -358,51 +358,37 @@ $(document).ready(function() {
                     }
                 },
 
-                 calibration: {
+              vehicleimage: {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Calibration Field  is required'
+                            message: 'The vehicleimage Field  is required'
                         }
                     }
                 },
 
-                 fitness: {
+                 model: {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Fitness Field  is required'
+                            message: 'The model Field  is required'
                         }
                     }
                 },
 
-                 route: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The Route Permit Field  is required'
-                        }
-                    }
-                },
 
-                 License: {
+            'doc[]': {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The License Field  is required'
+                            message: 'The scan document Field is required'
                         }
                     }
                 },
+    
 
                  
-              model: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The Model Field is required'
-                        }
-                    }
-                },
+             
                 'capacityofchamber[]': {
                    trigger:'change keyup blur',
                     validators: {

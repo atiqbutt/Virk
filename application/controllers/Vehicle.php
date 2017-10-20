@@ -177,6 +177,7 @@ $this->vehicle_model->save('vehicle_document', $op);
             $data['userInfo'] = $this->userInfo; 
             $data['menu'] = $this->load_model->menu();
     		$data['edit']=$this->vehicle_model->vehicleDetails($id);
+
             $data['data']=$this->vehicle_model->get_vehicleType();
             $data['chamber']=$this->vehicle_model->getchamber();
             if($data['edit']==null){

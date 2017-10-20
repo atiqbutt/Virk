@@ -322,61 +322,37 @@ $(document).ready(function() {
                     }
                 },
 
-
-                 token: {
+                 vehicleimage: {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Token Field  is required'
+                            message: 'The vehicleimage Field  is required'
                         }
                     }
                 },
 
-                 calibration: {
+                 model: {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Calibration Field  is required'
+                            message: 'The model Field  is required'
                         }
                     }
                 },
 
-                 fitness: {
+
+            'doc[]': {
                    trigger:'change keyup blur',
                     validators: {
                         notEmpty: {
-                            message: 'The Fitness Field  is required'
+                            message: 'The scan document Field is required'
                         }
                     }
                 },
 
-                 route: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The Route Permit Field  is required'
-                        }
-                    }
-                },
+              
 
-                 License: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The License Field  is required'
-                        }
-                    }
-                },
-
-                 
-              model: {
-                   trigger:'change keyup blur',
-                    validators: {
-                        notEmpty: {
-                            message: 'The Model Field is required'
-                        }
-                    }
-                },
+             
                 'capacityofchamber[]': {
                    trigger:'change keyup blur',
                     validators: {
