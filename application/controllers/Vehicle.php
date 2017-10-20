@@ -94,14 +94,8 @@ class Vehicle extends CI_Controller {
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
                     'modifiedBy'=>$id,
                     'color'=>$color,
-                    'model'=>$mod,
-                    'Token_Expiry'=>$token,
-                    'Calibration'=>$calib,
-                    'Route_Permit'=>$route,
-                    'License'=>$licesnce,
-                    'Fitness_Certificate'=>$fitness
-
-                    );
+                    'model'=>$mod
+                      );
                              
 		   $vehicle_id = $this->vehicle_model->save('vehicle',$field);
            $op=array();

@@ -91,6 +91,7 @@
                          <div class="form-group">
                         <label class="control-label col-sm-4">Scan Document <span class="required">*</span></label>
                         <div class="col-sm-7"> 
+                          
                         <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
                     </div>
 

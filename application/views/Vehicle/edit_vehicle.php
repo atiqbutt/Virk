@@ -80,15 +80,14 @@
                         <input class="form-control"  type="text" value="<?php echo $edit->model?>" name="model"  placeholder="Model...."  /> </div> </div>
                       
                     
-
-
-                       
-
                          
                        <div class="form-group"> 
                         <label class="control-label col-sm-4">Vehicle Image<span class="required">*</span></label>
                         <div class="col-sm-7"> 
-                        <input type="file" name="vehicleimage" class="form-control" >
+                        <?php if (!empty($edit->image)) { ?> 
+                        <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$edit->image; ?>" id="show-picture" width="100px" class="img-responsive img-thumbnail"><br><br>
+                       <?php }?>
+                       <input type="file" name="vehicleimage" id="picture" class="form-control img-responsive img-thumbnail" width="150px">
                         </div></div>
 
 
@@ -97,6 +96,9 @@
                          <div class="form-group">
                         <label class="control-label col-sm-4">Scan Document <span class="required">*</span></label>
                         <div class="col-sm-7"> 
+                            <?php if (!empty($edit->pat)) { ?> 
+                            <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$edit->pat; ?>" id="show-picture" width="100px" class="img-responsive img-thumbnail"><br><br>
+                       <?php }?>
                         <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
                          </div>
 
