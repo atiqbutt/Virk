@@ -359,7 +359,7 @@ contactnumber: {
                         }
                     },
                     remote: {
-                        url: '<?php echo base_url()?>Defination/editexistphonecompany',
+                        url: '<?php echo base_url()?>Defination/editexistphonecustomer',
                         // Send { email: 'its value', username: 'its value' } to the back-end
                         data: function(validator, $field, value) {
                             var phone=validator.getFieldElements('phone[]').val();
@@ -389,7 +389,7 @@ contactnumber: {
                          },
                         
                     remote: {
-                        url: "<?php echo base_url()?>Defination/editexistemailcompany",
+                        url: "<?php echo base_url()?>Defination/editexistemailcustomer",
                         // Send { email: 'its value', username: 'its value' } to the back-end
                         data: function(validator, $field, value) {
                             var email=window.btoa(validator.getFieldElements('email').val());
@@ -421,7 +421,7 @@ contactnumber: {
                         },
                         
                     remote: {
-                        url: "<?php echo base_url()?>Defination/editexistcniccompany",
+                        url: "<?php echo base_url()?>Defination/editexistcniccustomer",
                         // Send { email: 'its value', username: 'its value' } to the back-end
                         data: function(validator, $field, value) {
                             var cnic=window.btoa(validator.getFieldElements('cnic').val());

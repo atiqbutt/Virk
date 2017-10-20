@@ -375,10 +375,26 @@ where email like '$search' && id!='$id'");
     return $query->row();
 }
 
+  
+public function editgetemailcustomer($search,$id)
+{
+    $query = $this->db->query("SELECT * FROM customerinformation
+where email like '$search' && id!='$id'");
+    return $query->row();
+}
+
 
 public function editgetcniccompany($search,$id)
 {
     $query = $this->db->query("SELECT * FROM companyinformation
+where cnic like '$search' && id!='$id'");
+    return $query->row();
+}
+
+
+public function editgetcniccustomer($search,$id)
+{
+    $query = $this->db->query("SELECT * FROM customerinformation
 where cnic like '$search' && id!='$id'");
     return $query->row();
 }

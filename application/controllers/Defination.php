@@ -788,7 +788,7 @@
 
 
 
-              $query = $this->Defination_Model->editgetemailcompany($search,$id);
+              $query = $this->Defination_Model->editgetemailcustomer($search,$id);
               if($query) {
               $data['valid']=false;
               echo json_encode($data);die;
@@ -810,7 +810,7 @@
 
 
 
-              $query = $this->Defination_Model->editgetcniccompany($search,$id);
+              $query = $this->Defination_Model->editgetcniccustomer($search,$id);
               if($query) {
               $data['valid']=false;
               echo json_encode($data);die;
