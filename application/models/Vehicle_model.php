@@ -27,7 +27,7 @@ class Vehicle_model extends CI_Model {
 	 	// $this->db->where('id',$id);
 	  //   return $query=$this->db->get()->row();
 
-	 	$q=$this->db->query("SELECT vehicle.vehicle_type,vehicle_document.path as pat,vehicle.registerationno,vehicle.engineno,vehicle.chassisno,vehicle.numberofchamber1 as numveh,vehicle.totalfuelcapacity as tot,vehicle.color,vehicle.company,vehicle.vehicleimage as image,vehicletype.id as vehtypeid,vehicletype.heading as head,vehicle.model,vehicle.scanimage,vehicle.is_deleted as vehdel,vehicle.id,vehicle.status as vehstat,chambers.id as chamid,chambers.vehicle_id,chambers.capacityofchamber as cham,chambers.numberofchamber as numcham FROM vehicle JOIN chambers ON vehicle.id=chambers.vehicle_id JOIN vehicletype ON vehicle.vehicle_type=vehicletype.id JOIN vehicle_document ON vehicle.id=vehicle_document.vechile_id WHERE vehicle.is_deleted=0 AND vehicle.id='$id'")->row();
+	 	$q=$this->db->query("SELECT vehicle.vehicle_type,vehicle.registerationno,vehicle.engineno,vehicle.chassisno,vehicle.numberofchamber1 as numveh,vehicle.totalfuelcapacity as tot,vehicle.color,vehicle.company,vehicle.vehicleimage as image,vehicletype.id as vehtypeid,vehicletype.heading as head,vehicle.model,vehicle.scanimage,vehicle.is_deleted as vehdel,vehicle.id,vehicle.status as vehstat,chambers.id as chamid,chambers.vehicle_id,chambers.capacityofchamber as cham,chambers.numberofchamber as numcham FROM vehicle JOIN chambers ON vehicle.id=chambers.vehicle_id JOIN vehicletype ON vehicle.vehicle_type=vehicletype.id WHERE vehicle.is_deleted=0 AND vehicle.id='$id'")->row();
 	   return $q;
 
 	 }
@@ -84,6 +84,11 @@ class Vehicle_model extends CI_Model {
 public function getchamber()
 {
 	  return $data=$this->db->where('is_deleted',0)->get('chambers')->result();
+}
+
+public function get_document()
+{
+	  return $data=$this->db->get('vehicle_document')->result();
 }
 
 

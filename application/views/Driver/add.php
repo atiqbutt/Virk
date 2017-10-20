@@ -604,20 +604,3 @@ function myFunction() {
         }
 }
 </script>-->
-
-
-
- <script type="text/javascript">
-function getJsDate( date )
-{
-  var jsDate = new Date();
-  jsDate.setFullYear( date.split('-')[0] );
-  jsDate.setMonth( (date.split('-')[1])-1 );
-  jsDate.setDate( date.split('-')[2]);
-  jsDate.setHours( 0 );
-  jsDate.setMinutes( 0 );
-  jsDate.setSeconds( 0 );
-  jsDate.setMilliseconds( 0 );
-  return jsDate;
-}
-</script>

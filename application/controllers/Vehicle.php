@@ -65,11 +65,7 @@ class Vehicle extends CI_Controller {
     $eng= $this->input->post('engineno');
     $cham= $this->input->post('numberofchambe');
 
-    $token= $this->input->post('token');
-    $calib= $this->input->post('calibration');
-    $fitness= $this->input->post('fitness');
-    $route= $this->input->post('route');
-    $licesnce= $this->input->post('License');
+   
   
     $totfuel= $this->input->post('totalfuelcapacity');
     $color= $this->input->post('color');
@@ -139,6 +135,103 @@ $this->vehicle_model->save('vehicle_document', $op);
 
 	
         }
+
+
+
+         public function update_vehicle()
+     {
+
+    if ($this->input->post()) {
+        $data=$this->input->post();
+
+    $reg= $this->input->post('registerationno');
+    $vec= $this->input->post('vehicle_type');
+    $chas= $this->input->post('chassisno');
+    $eng= $this->input->post('engineno');
+    $cham= $this->input->post('numberofchambe');
+
+   
+  
+    $totfuel= $this->input->post('totalfuelcapacity');
+    $color= $this->input->post('color');
+    $comp= $this->input->post('company');
+    $mod= $this->input->post('model');
+    $url=$this->do_upload();
+    $url2=$this->do_upload2();
+   
+     $admin=json_decode(base64_decode($this->session->admin),true);
+     $id=$admin['id'];
+                    $field=array(
+                    'vehicle_type'=>$vec,
+                    'registerationno'=>$reg,
+                    'chassisno'=>$chas,
+                    'engineno'=>$eng,
+                    'company'=>$comp,
+                    'numberofchamber1'=>$cham,
+                    'totalfuelcapacity'=>$totfuel,
+                    'vehicleimage'=>$url,
+                    'createdAt'=>date("Y-m-d h:i:sa"),
+                    'createdBy'=>$id,
+                    'modifiedAt'=>date("Y-m-d h:i:sa"),
+                    'modifiedBy'=>$id,
+                    'color'=>$color,
+                    'model'=>$mod
+                      );
+        $vehicle_id=$this->db->where('id',$data['vehicleid'])->update('vehicle',$field);     
+         
+           $op=array();
+            foreach ($url2 as $key => $value) {
+           $op=array(
+            'vechile_id'=>$vehicle_id,
+            'path'=>$value
+            );
+    $this->db->where('id',$data['id'])->update('vehicle_document',$op);     
+    }
+
+   //$this->vehicle_model->save_batch('vechile_document', $op); 
+
+            $cap= $this->input->post('capacityofchamber');
+            $chamb= $this->input->post('numberofchamber');
+
+           for ($i = 0; $i<count($chamb); $i++) {
+                $data1 = array(
+                    'vehicle_id'=>$vehicle_id,
+                    'numberofchamber'=>$chamb[$i],
+                    'capacityofchamber'=>$cap[$i],
+                    'createdAt'=>date("Y-m-d h:i:sa"),
+                    'createdBy'=>$id,
+                    'modifiedAt'=>date("Y-m-d h:i:sa"),
+                    'modifiedBy'=>$id,
+                ); 
+                $this->vehicle_model->save("chambers", $data1); 
+
+              } 
+                $this->session->set_flashdata('msg', "Record has been Added Successfully
+");
+            redirect('Vehicle/show_vehicle');
+
+            }else{
+
+                $this->session->set_flashdata('error', "Record has been not Added Successfully
+");
+                redirect('Vehicle/show_vehicle');
+
+            }
+
+    
+        }
+
+
+
+
+
+
+
+
+
+
+
+
  public function do_upload2()
      { 
          $images1=array();
@@ -180,7 +273,9 @@ $this->vehicle_model->save('vehicle_document', $op);
 
             $data['data']=$this->vehicle_model->get_vehicleType();
             $data['chamber']=$this->vehicle_model->getchamber();
-            if($data['edit']==null){
+           $data['document']=$this->vehicle_model->get_document();
+
+             if($data['edit']==null){
             redirect('Error/dataNotFound');
             }
             

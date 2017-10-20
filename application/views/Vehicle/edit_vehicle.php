@@ -1,5 +1,5 @@
 
-<form id="defaultForm" action="<?php echo base_url('Vehicle/save_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
+<form id="defaultForm" action="<?php echo base_url('Vehicle/update_vehicle')?>" class="form-horizontal" method="post" enctype="multipart/form-data">
 <section class="content">
     <div class="row">
         <div class="col-lg-8">
@@ -27,7 +27,7 @@
                         </select>
                        </div>
                       </div>
-
+                      <input type="text" name="vehicleid" value="<?php echo $edit->id?>"> 
                       <div class="form-group">
                       <label class="control-label col-sm-4">Registration No <span class="required">*</span></label>
                       <div class="col-sm-7">
@@ -90,15 +90,24 @@
                        <input type="file" name="vehicleimage" id="picture" class="form-control img-responsive img-thumbnail" width="150px">
                         </div></div>
 
-
-
- 
+                        
                          <div class="form-group">
                         <label class="control-label col-sm-4">Scan Document <span class="required">*</span></label>
                         <div class="col-sm-7"> 
-                            <?php if (!empty($edit->pat)) { ?> 
-                            <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$edit->pat; ?>" id="show-picture" width="100px" class="img-responsive img-thumbnail"><br><br>
-                       <?php }?>
+                          <?php
+                          foreach ($document as $val) {
+                            ?>
+                          
+                           <?php
+                  if($val->vechile_id==$edit->id)
+                  {
+                  ?>
+                            <?php if (!empty($val->path)) { ?> 
+                            <img style="border:1px solid #D3D3D3;" alt="User Pic" src="<?php echo base_url().$val->path; ?>" id="show-picture" width="100px" class="img-responsive img-thumbnail"><br><br>
+                       <?php }}}
+
+                       ?>
+
                         <input class="form-control"  name="doc[]" multiple="accept" type="file" /> </div> </div> 
                          </div>
 
@@ -160,9 +169,9 @@
                          </div>
                      </div>
           <?php
-          }
+         
           $i++;
-          }
+          } }
           ?>
                       </div>
                     
