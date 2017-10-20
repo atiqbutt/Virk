@@ -151,8 +151,6 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                        </div>
                       </div>
                     
-                     
-                         
                           <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Scan Document<span class="required"></span>
                         </label>
@@ -160,10 +158,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                           <input type="file"  id="inputEmail3" name="doc" class="form-control">
                      </div>
                       </div>
-                         
-                      
-                     
-                      <div class="ln_solid"></div>
+                     <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                           <input class="btn btn-success" type="submit" name="register" value="Submit" />
@@ -463,26 +458,6 @@ $(document).ready(function(){
                 }
             },
 
-
-
-                //     email: {
-                //          trigger:'blur',
-                //     validators: {
-                //         notEmpty: {
-                //             message: 'The email is required'
-                //         },
-                //          regexp: {
-                //             regexp: /\S+@\S+\.\S+/,
-                //              message: 'The input is not a valid email address'
-                //          },
-                        
-                //     }
-                // },
-
-
-              
-        
-
                     address: {
                          trigger:'blur',
                         validators: {
@@ -515,10 +490,7 @@ $(document).ready(function(){
                     }
                 }
             },
-                   
-                    
-                    
-                    religion: {
+              religion: {
                          trigger:'blur',
                         validators: {
                             notEmpty: {
@@ -552,19 +524,14 @@ $(document).ready(function(){
                             }
                         }
                     },
-
-
                    
                 }
             });
     });
-    
-    
-       
-     
 $("#zzz").click(function(){
    $('#shippingForm').bootstrapValidator("resetForm",true);    
 });
+<<<<<<< HEAD
 </script>
 
 
