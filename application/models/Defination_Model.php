@@ -103,8 +103,22 @@ public function agentDetails($id)
 
 }
 
-//customerinformation bilal
+//company information bilal
 public function companyDetails($id)
+{
+
+        $this->db->select('*');
+        $this->db->from('companyinformation');
+      
+        $this->db->where('companyinformation.id',$id);
+        $this->db->where('companyinformation.is_deleted',0);
+        $result = $this->db->get()->row();
+        return $result;
+
+}
+
+//customer information bilal
+public function customerDetails($id)
 {
 
         $this->db->select('*');
@@ -116,6 +130,8 @@ public function companyDetails($id)
         return $result;
 
 }
+
+
 
 //helperinformation bilal
 public function helperDetails($id)
@@ -354,7 +370,7 @@ public function getphonedriver($search)
     
 public function editgetemailcompany($search,$id)
 {
-    $query = $this->db->query("SELECT * FROM customerinformation
+    $query = $this->db->query("SELECT * FROM companyinformation
 where email like '$search' && id!='$id'");
     return $query->row();
 }
@@ -362,7 +378,7 @@ where email like '$search' && id!='$id'");
 
 public function editgetcniccompany($search,$id)
 {
-    $query = $this->db->query("SELECT * FROM customerinformation
+    $query = $this->db->query("SELECT * FROM companyinformation
 where cnic like '$search' && id!='$id'");
     return $query->row();
 }
@@ -370,9 +386,17 @@ where cnic like '$search' && id!='$id'");
 
 public function editgetphonecompany($search,$id)
 {
+    $query = $this->db->query("SELECT * FROM companyinformation where number like '$search' && id!='$id'");
+    return $query->row();
+}
+
+
+public function editgetphonecustomer($search,$id)
+{
     $query = $this->db->query("SELECT * FROM customerinformation where number like '$search' && id!='$id'");
     return $query->row();
 }
+
 
 
     
@@ -388,7 +412,7 @@ public function editgetphonecompany($search,$id)
      public function getemailcompany($search)
 {
    
-    $query = $this->db->query("SELECT * FROM customerinformation where email like '$search' ");
+    $query = $this->db->query("SELECT * FROM companyinformation where email like '$search' ");
     return $query->result_array();
 }   
 
@@ -396,11 +420,30 @@ public function editgetphonecompany($search,$id)
  public function getcompanycnic($search)
 {
    
+    $query = $this->db->query("SELECT * FROM companyinformation where cnic like '$search' ");
+    return $query->row();
+}
+
+
+
+ public function getcustomercnic($search)
+{
+   
     $query = $this->db->query("SELECT * FROM customerinformation where cnic like '$search' ");
     return $query->row();
 }
+
+
+
  
  public function getcompanycontact($search)
+{
+   
+    $query = $this->db->query("SELECT * FROM companyinformation where cpnumber like '$search' ");
+    return $query->row();
+}
+
+public function getcustomercontact($search)
 {
    
     $query = $this->db->query("SELECT * FROM customerinformation where cpnumber like '$search' ");
@@ -425,10 +468,15 @@ where cnic like '$search' ");
         return $this->db->select()->from('helperinformation')->where('is_deleted',0)->order_by("id", "desc")->get()->result_array();
 	}	
         
-        public function viewcustomer()
+        public function viewcompany()
 	{
-        return $this->db->select()->from('customerinformation')->where('is_deleted',0)->order_by("id", "desc")->get()->result_array();
+        return $this->db->select()->from('companyinformation')->where('is_deleted',0)->order_by("id", "desc")->get()->result_array();
 	}	
+
+     public function viewcustomer()
+    {
+        return $this->db->select()->from('customerinformation')->where('is_deleted',0)->order_by("id", "desc")->get()->result_array();
+    }   
         
         
          public function viewagent()

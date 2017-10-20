@@ -147,10 +147,20 @@
               public function printcompany($p="")
               {
 
-              $data['view']=$this->db->where('id',$p)->get('customerinformation
+              $data['view']=$this->db->where('id',$p)->get('companyinformation
 
               ')->row();
               $this->load->view('Company/company_p',$data);
+              }
+
+
+               public function printcustomer($p="")
+              {
+
+              $data['view']=$this->db->where('id',$p)->get('customerinformation
+
+              ')->row();
+              $this->load->view('Customer/customer_p',$data);
               }
 
               public function printdriver($p="")
@@ -614,7 +624,7 @@
                     'modifiedBy'=>$id                 
                 );
                
-                $done=$this->Defination_Model->insert('customerinformation',$data);
+                $done=$this->Defination_Model->insert('companyinformation',$data);
                 if($done)
                 {
                     $this->session->set_flashdata('msg','Record has been Added Successfully
@@ -635,7 +645,7 @@
               $data['menu'] = $this->load_model->menu();
               $data['base_url'] = base_url();
               $data['userInfo'] = $this->userInfo;
-              $data['customer']=$this->Defination_Model->viewcustomer();
+              $data['customer']=$this->Defination_Model->viewcompany();
               $data['page']='Company/list';
               $this->load->view('Template/main',$data);
 
@@ -676,7 +686,7 @@
               $data['base_url'] = base_url();
               $data['userInfo'] = $this->userInfo;
               $id=$this->uri->segment(3);
-              $data['edit']=$this->db->where('id',$id)->get('customerinformation')->row();
+              $data['edit']=$this->db->where('id',$id)->get('companyinformation')->row();
               if($data['edit']==""){
               redirect('Error/dataNotFound');
               }
@@ -705,6 +715,7 @@
                     'cpnumber'=>$field['contactnumber'],
                     'email'=>$field['email'],
                     'image1'=>$url,
+                     'doc'=>$url2,
                     'modifiedAt'=>date("Y-m-d h:i:sa"),
                     'modifiedBy'=>$id
                     );
@@ -717,8 +728,8 @@
                     {
                    $data['doc']=$url2;
                     }
-               
-                    $done=$this->db->where('id',$field['id'])->update('customerinformation',$data);
+                
+                    $done=$this->db->where('id',$field['id'])->update('companyinformation',$data);
                     if($done)
                        {
                        $this->session->set_flashdata('msg', 'Record has been Updated Successfully
@@ -733,13 +744,13 @@
 
               public function status_company($id)
               {
-              $query=$this->db->where('id',$id)->get('customerinformation')->row();
+              $query=$this->db->where('id',$id)->get('companyinformation')->row();
 
               $new=($query->status==0) ? 1:0;
               $data=array(
               'status'=>$new
               );
-                                        $query=  $this->db->where('id',$id)->update('customerinformation',$data);
+               $query=  $this->db->where('id',$id)->update('companyinformation',$data);
 
               if($query)
               {
@@ -751,7 +762,7 @@
               public function deletecompany()
               {
               $id=$this->uri->segment(3);
-              $done=$this->db->where('id',$id)->update('customerinformation',array('is_deleted'=>1));
+              $done=$this->db->where('id',$id)->update('companyinformation',array('is_deleted'=>1));
               if($done)
                 {
               $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
@@ -760,7 +771,329 @@
                }
                        
               }  
-              /****************************************** End of Customer   *****************************************/
+              /****************************************** End of company   *****************************************/
+
+
+
+
+              /****************************************** Start Customer    ************************************************/
+
+
+              public function editexistemailcustomer()
+              {
+
+              $id=$this->input->post('id');
+
+              $search=  $this->input->post('email');
+
+
+
+              $query = $this->Defination_Model->editgetemailcompany($search,$id);
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);die;
+
+
+              }
+
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+
+
+              public function editexistcniccustomer()
+              {
+
+              $id=$this->input->post('id');
+
+              $search=  $this->input->post('cnic');
+
+
+
+              $query = $this->Defination_Model->editgetcniccompany($search,$id);
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);die;
+
+
+              }
+
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+
+
+
+              public function editexistphonecustomer()
+              {
+
+              $id=$this->input->post('id');
+
+              $search=  $this->input->post('phone');
+
+
+              foreach ($search as $key => $value) {
+              $query = $this->Defination_Model->editgetphonecustomer($value,$id);
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);die;
+              }
+
+              }
+
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+
+
+
+              public function existemailcustomer()
+              {
+              $search=  $this->input->post('email');
+              $query = $this->Defination_Model->getemailcustomer($search);
+
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);
+              }else{
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+              }
+
+              public function existcontactcustomer()
+              {
+              $search=  $this->input->post('contactnumber');
+              $query = $this->Defination_Model->getcustomercontact($search);
+
+
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);
+              }else{
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+              }
+
+              public function existcustomercnic()
+              {
+              $search=  $this->input->post('cnic');
+              $query = $this->Defination_Model->getcustomercnic($search);
+
+
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);
+              }else{
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+              }          
+                                
+              public function existphonecustomer()
+              {
+              $search=  $this->input->post('phone');
+              foreach ($search as $key => $value) {
+              $query = $this->Defination_Model->editgetphonecustomer($value);
+              if($query) {
+              $data['valid']=false;
+              echo json_encode($data);die;
+              }
+              }
+
+              $data['valid']=true;
+              echo json_encode($data);
+              }
+
+
+              public function savecustomer()
+              {
+
+              if($this->input->post())
+              {
+                $field=$this->input->post();
+              //                if(!($field['image']=="" || $field['image']==null))
+                 $admin=json_decode(base64_decode($this->session->admin),true);
+              $id=$admin['id'];
+                $url=$this->do_upload();
+                $url2=$this->do_upload2();
+                $data=array(
+                    'name'=>$field['name'],
+                    
+                    'number'=>implode(',',$field['phone']),
+                    'address'=>$field['address'], 
+                    'cnic'=>$field['cnic'],
+                    'doc'=>$url2,
+                    'cpname'=>$field['contactname'],
+                    'cpnumber'=>$field['contactnumber'],
+                    'email'=>$field['email'],
+                    'image1'=>$url,
+                    'status'=>0,
+                    'createdAt'=>date("Y-m-d h:i:sa"),
+                    'createdBy'=>$id,
+                    'modifiedAt'=>date("Y-m-d h:i:sa"),
+                    'modifiedBy'=>$id                 
+                );
+             
+                $done=$this->Defination_Model->insert('customerinformation',$data);
+                if($done)
+                {
+                    $this->session->set_flashdata('msg','Record has been Added Successfully
+');
+                    redirect('Defination/customerpage');
+                
+              }
+                }
+
+              }
+
+
+
+
+
+              public function customerpage()
+              {
+              $data['menu'] = $this->load_model->menu();
+              $data['base_url'] = base_url();
+              $data['userInfo'] = $this->userInfo;
+              $data['customer']=$this->Defination_Model->viewcustomer();
+              $data['page']='Customer/list';
+              $this->load->view('Template/main',$data);
+
+
+              }
+
+
+              public function addcustomer()
+              {
+              $data['menu'] = $this->load_model->menu();
+              $data['base_url'] = base_url();
+              $data['userInfo'] = $this->userInfo;
+              $data['page']='Customer/add';
+              $this->load->view('Template/main',$data);
+
+              }
+
+
+
+
+              public function eyecustomer()
+              {
+              $data['menu'] = $this->load_model->menu();
+              $data['base_url'] = base_url();
+              $data['userInfo'] = $this->userInfo;
+              $id=$this->uri->segment(3);
+              $data['view']=$this->Defination_Model->customerDetails($id);
+              $data['page']='Customer/view';
+              $this->load->view('Template/main',$data);
+
+
+              }
+
+
+              public function editcustomer()
+              {
+              $data['menu'] = $this->load_model->menu();
+              $data['base_url'] = base_url();
+              $data['userInfo'] = $this->userInfo;
+              $id=$this->uri->segment(3);
+              $data['edit']=$this->db->where('id',$id)->get('customerinformation')->row();
+              if($data['edit']==""){
+              redirect('Error/dataNotFound');
+              }
+              $data['page']='Customer/edit';
+              $this->load->view('Template/main',$data);
+
+              }
+
+
+              public function updatecustomer()
+              {
+              if($this->input->post())
+              {
+                 $field=$this->input->post();
+                    
+               $url=$this->do_upload();
+               $url2=$this->do_upload2(); 
+              $admin=json_decode(base64_decode($this->session->admin),true);
+              $id=$admin['id'];
+              $data=array(
+                    'name'=>$field['name'],
+                   'number'=>implode(',',$field['phone']),
+                    'address'=>$field['address'],
+                    'cnic'=>$field['cnic'],
+                     'cpname'=>$field['contactname'],
+                    'cpnumber'=>$field['contactnumber'],
+                    'email'=>$field['email'],
+                    'image1'=>$url,
+                     'doc'=>$url2,
+                    'modifiedAt'=>date("Y-m-d h:i:sa"),
+                    'modifiedBy'=>$id
+                    );
+
+                if($url!='')
+                    {
+                    $data['image1']=$url;
+                    }
+                    
+                    if($url2!='')
+                    {
+                   $data['doc']=$url2;
+                    }
+                
+                    $done=$this->db->where('id',$field['id'])->update('customerinformation',$data);
+                    if($done)
+                       {
+                       $this->session->set_flashdata('msg', 'Record has been Updated Successfully
+');
+                       redirect('Defination/customerpage');
+                       }
+                
+                
+                }  
+
+              }
+
+              public function status_customer($id)
+              {
+              $query=$this->db->where('id',$id)->get('customerinformation')->row();
+
+              $new=($query->status==0) ? 1:0;
+              $data=array(
+              'status'=>$new
+              );
+              $query=  $this->db->where('id',$id)->update('customerinformation',$data);
+
+              if($query)
+              {
+              redirect('Defination/customerpage');
+              }
+                                }
+
+
+              public function deletecustomer()
+              {
+              $id=$this->uri->segment(3);
+              $done=$this->db->where('id',$id)->update('customerinformation',array('is_deleted'=>1));
+              if($done)
+                {
+              $this->session->set_flashdata('msg', 'Record has been Deleted Successfully
+');
+              redirect('Defination/customerpage');
+               }
+                       
+              }  
+
+
+
+
+
+
+
+
+             /****************************************** End of customer   *****************************************/
+
 
 
               /****************************************** Start Agent    ************************************************/
