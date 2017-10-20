@@ -175,7 +175,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                               <input type="cnic" name="dob" class="form-control" id="datess" placeholder="Date of Birth" value="<?php echo $edit->dob?>">
+                               <input type="date" name="dob" class="form-control" id="datess" placeholder="Date of Birth" min="1980-01-01" max="2000-12-31">
             
                         </div>
                       </div>
@@ -185,7 +185,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Joining <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <input type="cnic" name="doj" required class="form-control" id="datepicker" value="<?php echo $edit->doj?>">
+                                  <input type="date" name="doj" required class="form-control" min="2005-01-01" max="2017-12-31" id="datepicker">
                
                         </div>
                       </div>
@@ -257,7 +257,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
  
 
  <script>
-    $( function() {
+ <!--    $( function() {
      $( "#datepicker" ).datepicker({
        changeMonth: true,
        changeYear: true,
@@ -273,7 +273,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
        
 
     });
-  } );
+  } ); -->
   
 $('.add_field').click(function(){
      $(this).parent().parent().remove();;

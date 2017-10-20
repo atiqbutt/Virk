@@ -116,7 +116,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Birth <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" name="dob" class="form-control" id="datess" placeholder="Date of Birth">
+                    <input type="date" name="dob" class="form-control" id="datess" placeholder="Date of Birth" min="1980-01-01" max="2000-12-31">
                         </div>
                       </div>
                     
@@ -125,7 +125,7 @@ if ((event.keyCode < 48 || event.keyCode > 57))
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date Of Joining <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                       <input type="text" name="doj" class="form-control" id="datepicker" placeholder="Date of Joining">
+                       <input type="date" name="doj" class="form-control" id="datepicker" min="2005-01-01" max="2017-12-31" placeholder="Date of Joining">
                      </div>
                       </div>
                     
@@ -438,7 +438,7 @@ $("#zzz").click(function(){
 </script>
 
 
-
+<!-- 
   <script>
      $( function() {
      $( "#datepicker" ).datepicker({
@@ -458,7 +458,7 @@ $("#zzz").click(function(){
     });
   } );
   </script>
- 
+  -->
 <!--  
 <script>
 function myFunction() {
