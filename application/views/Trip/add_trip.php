@@ -773,9 +773,9 @@ $(document).ready(function() {
         $(".MilStr").val(milli_start);
 
       
-        $("#product_id").html("");
-        $("#source").html("");
-        $("#destination").html("");
+        $("#product_id").val("");
+        $("#source").val("");
+        $("#destination").val("");
         $("#product_quantity").val("");
         $("#product_temperature").val("");
         $("#product_gravity").val("");
