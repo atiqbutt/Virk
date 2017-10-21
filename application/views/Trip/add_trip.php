@@ -3,6 +3,9 @@
     display: none;
   }
 
+  
+  
+  
 .ms-options li{
   list-style-type: none;
   padding-left: 0px;
