@@ -222,7 +222,7 @@
                     <div class="col-lg-3 paddinglr2">
                         <div class="form-group"> 
                           <label>Source </label>
-                            <select id="source" class="form-control sel" name="source" selected="selected" > 
+                            <select id="source" class="form-control " name="source" selected="selected" >
                             <option value="">Select Options</option>       
 
                              <?php  if(!empty($source)){
@@ -238,7 +238,7 @@
                   <div class="col-lg-3 paddinglr2">
                     <div class="form-group"> 
                             <label>Destination </label>
-                              <select id="destination" class="form-control sel" name="destination" selected="selected" > 
+                              <select id="destination" class="form-control " name="destination" selected="selected" >
                               <option value="">Select Options</option>       
 
                                <?php  if(!empty($source)){
@@ -255,7 +255,7 @@
                     <div class="col-lg-3 paddinglr2" style="float:left;">
                       <div class="form-group">
                       <label>Product </label>
-                      <select id="product_id"  class="form-control product sel" name="product_id"  >
+                      <select id="product_id"  class="form-control product " name="product_id"  >
                       <option value="">Select Options</option>
                       <?php  if(!empty($product)){foreach ($product as $p){   ?><option value="<?php  echo  $p["id"];?>" ><?php  echo  $p["heading"];?></option>
                       <?php }} ?>
