@@ -13,7 +13,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                 <form class="form-horizontal"  action="<?php echo base_url()?>Maintenance/save_routePermit" method="post">         
+                 <form id="add_permit" class="form-horizontal"  action="<?php echo base_url()?>Maintenance/save_routePermit" method="post">         
                      <div class="form-group"> 
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Vechile</label>                       
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -33,7 +33,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Route Permit<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  name="route_permit" type="text" class="form-control" onkeypress='return ValidateNumberOnly()'>                        
+                          <input  name="calibration" type="text" class="form-control" onkeypress='return ValidateNumberOnly()'>                        
                           </div>
                       </div>
                   
@@ -61,9 +61,29 @@
                           </div>
                       </div>
 
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Fee<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input  name="fee" type="text" class="form-control" >                        
+                          </div>
+                      </div>
+                  
+
+                     <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Scan Document<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input  type="file" name="userfile" class="form-control" >                     
+                          </div>
+                      </div>
+                  
+
 
                       <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-12">
-                        <input type="submit" value="Add" class="btn btn-primary" >  
+                        <input type="submit" value="Add" class="btn btn-primary" > 
+                        <button type="reset" class="btn btn-success" >Reset</button>
+                        <a href="<?php echo base_url() ?>Maintenance/view_routePermit" class="btn btn-danger">Cancel</a>   
                       </div>  
                
                 </form>
@@ -78,16 +98,73 @@
     </section>
 
 
-<script>
+<script type="text/javascript">
+function readURL(input) {
 
-function ValidateNumberOnly()
-{
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 46  ) 
-{
-   event.returnValue = false;
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
-}
+$("#picture").change(function() {
+    readURL(this);
+  $('#img').removeAttr('style')
+});
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#add_permit')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                certificate_number: {
+                   trigger:'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The calibration Field is required and cannot be empty'
+                        },
+                        integer: {
+                            message: 'The value is not an integer',
+                            // The default separators
+                            thousandsSeparator: '',
+                            decimalSeparator: '.'
+                        }
+                       
+                    }
+                },
+
+                fee: {
+                   trigger:'blur',
+                    validators: {
+                        notEmpty: {
+                            message: 'The Fee Field is required and cannot be empty'
+                        },
+                        integer: {
+                            message: 'The value is not an integer',
+                            // The default separators
+                            thousandsSeparator: '',
+                            decimalSeparator: '.'
+                        }
+                       
+                    }
+                },
+            
+            }
+        });
+
+});
+
 
 </script>
