@@ -9,11 +9,11 @@
             <div class="col-xs-12">
                 <div class="box col-sm-12">
                     <div class="box-header" >
-                        <h3 class="box-title">Add routePermit</h3>
+                        <h3 class="box-title">Add tyre</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form id="routePermit" class="form-horizontal"  action="<?php echo base_url()?>Maintenance/save_routePermit" method="post">
+                        <form id="tyre" class="form-horizontal"  action="<?php echo base_url()?>Maintenance/save_tyre" method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Vehicle</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -30,10 +30,10 @@
                             </div>
 
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">routePermit Number<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Tyre Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  name="routePermit" type="text" class="form-control"  required>
+                                    <input  name="tyreNo" type="text" class="form-control"  required>
                                 </div>
                             </div>
 
@@ -88,7 +88,7 @@
                             <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-12">
                                 <input type="submit" value="Add" class="btn btn-primary" >
                                 <input type="reset" value="Reset" class="btn btn-success" >
-                                <a class="btn btn-danger" href="<?php echo base_url() ?>maintenance/view_routePermit">Cancel</a>
+                                <a class="btn btn-danger" href="<?php echo base_url() ?>maintenance/view_tyre">Cancel</a>
                             </div>
 
                         </form>
@@ -105,7 +105,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#routePermit')
+        $('#tyre')
             .on('init.form.bv', function(e, data) {
                 //console.log(data);
             })
@@ -117,7 +117,7 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    routePermit: {
+                    tyre: {
                         trigger:'blur',
                         validators: {
                             notEmpty: {
@@ -138,7 +138,7 @@
                             },
                             regexp: {
                                 regexp: /^[a-z\s]+$/i,
-                                message: 'The full name can consist of alphabetical characters and spaces only'
+                                message: 'The field can consist of alphabetical characters and spaces only'
                             }
                         }
                     },

@@ -16,30 +16,33 @@
                 <table id="example2" class="users table table-bordered table-hover">
                     <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Vechile</th>
-                          <th>Token</th>
-                          <th>Start Date</th>
-                          <th>End Date</th>
-                          <th>Notification Date</th>
+                            <th>#</th>
+                            <th>Vehicle</th>
+                            <th>Token</th>
+                            <th>Issue Date</th>
+                            <th>Expiry Date</th>
+                            <th>Notification Date</th>
+                            <th>Fee</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
                         </tr>
                       </thead>
 
                       <tbody>
                         <?php $i=1; foreach ($tokens as $value)  { ?>
                         <tr>
-                          <td><?php echo $i++; ?></td>
-                          <td><?php echo $value['vehicle']; ?></td>
-                          <td><?php echo $value['token']; ?></td>
-                          <td><?php echo $value['start_date']; ?></td>
-                          <td><?php echo $value['end_date']; ?></td>
-                          <td><?php echo $value['notification_date']; ?></td>
-                              
-                         <!--  <td> -->
-                           <!--  <a href="<?php //echo $base_url; ?>Defination/edit_expense/<?php // echo $value['id']; ?>"><i class="fa fa-edit"></i></a>  -->
-                            <!-- a href="<?php //echo $base_url; ?>Commission/delete_contractor_company/<?php //echo $value['id']; ?>"><i class="fa fa-trash"></i></a> -->
-                          <!-- </td> -->
-                           <!-- <?php } ?> -->
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $value['vehicle']; ?></td>
+                            <td><?php echo $value['token']; ?></td>
+                            <td><?php echo $value['start_date']; ?></td>
+                            <td><?php echo $value['end_date']; ?></td>
+                            <td><?php echo $value['notification_date']; ?></td>
+                            <td><?php echo $value['fee']; ?></td>
+                            <td><?php echo $value['remarks']; ?></td>
+                       <td>
+                         <a href="<?php echo $base_url; ?>Maintenance/token_details/<?php echo $value['id']; ?>"><i class="fa fa-eye"></i></a>
+                       </td>
+                       <?php } ?>
                         </tr>
                       </tbody>
                 </table>

@@ -9,11 +9,11 @@
             <div class="col-xs-12">
                 <div class="box col-sm-12">
                     <div class="box-header" >
-                        <h3 class="box-title">Add routePermit</h3>
+                        <h3 class="box-title">Add calibration</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form id="routePermit" class="form-horizontal"  action="<?php echo base_url()?>Maintenance/save_routePermit" method="post">
+                        <form id="calibration" class="form-horizontal"  action="<?php echo base_url()?>Maintenance/save_calibration" method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Vehicle</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -30,10 +30,10 @@
                             </div>
 
                             <div class="item form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">routePermit Number<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">calibration Number<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  name="routePermit" type="text" class="form-control"  required>
+                                    <input  name="calibration" type="text" class="form-control"  required>
                                 </div>
                             </div>
 
@@ -88,7 +88,7 @@
                             <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-12">
                                 <input type="submit" value="Add" class="btn btn-primary" >
                                 <input type="reset" value="Reset" class="btn btn-success" >
-                                <a class="btn btn-danger" href="<?php echo base_url() ?>maintenance/view_routePermit">Cancel</a>
+                                <a class="btn btn-danger" href="<?php echo base_url() ?>maintenance/view_calibration">Cancel</a>
                             </div>
 
                         </form>
@@ -105,7 +105,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#routePermit')
+        $('#calibration')
             .on('init.form.bv', function(e, data) {
                 //console.log(data);
             })
@@ -117,7 +117,7 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    routePermit: {
+                    calibration: {
                         trigger:'blur',
                         validators: {
                             notEmpty: {
@@ -153,7 +153,7 @@
                                 message: 'The value is not an integer'
                             }
                         }
-                    },
+                    }
 
 
 
